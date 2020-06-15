@@ -1,0 +1,26 @@
+.imageBox {
+  background-image: url('https://cdn.pixabay.com/photo/2016/04/30/13/12/texture-1362879_1280.jpg');
+  .boxText {
+    margin-left: 5px;
+    color: white;
+    font-weight: 700;
+  }
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  column-gap: 20px;
+  row-gap: 25px;
+
+  ::before {
+    content: '';
+    padding-bottom: 100%;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.container {
+    margin-bottom: 100px;
+}
