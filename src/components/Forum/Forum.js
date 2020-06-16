@@ -23,19 +23,21 @@ class Forum extends Component {
         const list = ['ENGLISH', 'ENGLISH LIT.', 'HISTORY', 'E. MATH', 'MALAY', 'A. MATH', 'BIOLOGY', 'PHYSICS']
 
         return (
-            <div className="container">
-                <div class="row">
-                    <div>1 - 2</div>
+            <div className="container mainContainer">
+                <div className="navRow">
+                    <div className="unfinished"><span>1</span></div>
+                    <div className="dash"></div>
+                    <div className="lock"><span>2</span></div>
                 </div>
                 <div className="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                    <div>
-                        <h2>Welcome to the SmartGuppy Forum!</h2>
-                        <p>This is the palce where you can reach out to our vibrant community and ask questions.</p>
+                    <div className="headingRow">
+                        <span className="headingText">Welcome to the SmartGuppy Forum!</span>
+                        <p style={{ fontWeight: 600 }}>This is the palce where you can reach out to our vibrant community and ask questions.</p>
                     </div>
 
                     <form onSubmit={this.handleSubmit}>
                         <div className="subBar">
-                            <h4>CHOOSE SUBJECTS YOUR'RE INTERESTED IN</h4>
+                            <span>CHOOSE SUBJECTS YOU'RE INTERESTED IN</span>
                             <button className="nextButton" type="submit">NEXT</button>
                         </div>
 
@@ -44,8 +46,7 @@ class Forum extends Component {
                                 list.map(item =>
                                     <div key={item} className="imageBox">
                                         <span className="boxText">{item}</span>
-
-                                        <div class="round">
+                                        <div className="round">
                                             <input
                                                 type="checkbox"
                                                 id={item}
@@ -53,14 +54,13 @@ class Forum extends Component {
                                                 defaultChecked={false} />
                                             <label htmlFor={item}></label>
                                         </div>
-
                                     </div>
                                 )
                             }
                         </div>
                     </form>
                 </div>
-            </div>
+            </div >
         )
     }
 }
