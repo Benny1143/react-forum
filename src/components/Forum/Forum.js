@@ -36,7 +36,7 @@ class Forum extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <div className="subBar">
                             <h4>CHOOSE SUBJECTS YOUR'RE INTERESTED IN</h4>
-                            <button type="button" className="nextButton" type="submit">NEXT</button>
+                            <button className="nextButton" type="submit">NEXT</button>
                         </div>
 
                         <div className="gridContainer">
