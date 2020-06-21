@@ -14,7 +14,7 @@ class Forum extends Component {
         this.state = {
             subjects: [],
             levelsInterests: [],
-            stage: 2
+            stage: 1
         }
 
         this.subjects = ['ENGLISH', 'ENGLISH LIT.', 'HISTORY', 'E. MATH', 'MALAY', 'A. MATH', 'BIOLOGY', 'PHYSICS']
@@ -36,16 +36,15 @@ class Forum extends Component {
             return a;
         }, () => {
             if (this.state.stage === 3) {
-                console.log(this.state)
+                const { subjects, levelsInterests } = this.state
+                console.log(subjects, levelsInterests)
                 //submit data to database
-                this.props.pushState('/why-share');
+                // this.props.pushState('/why-share');
             }
         })
     }
 
-    backFirst() {
-        this.setState({ stage: 1 })
-    }
+    backFirst = () => this.state.stage === 2 && this.setState({ stage: 1 })
 
     render() {
         const stage = this.state.stage;
@@ -68,37 +67,45 @@ class Forum extends Component {
                         </p>
                     </div>
                     {stage !== 3 &&
-                        <form onSubmit={this.handleSubmit.bind(this)}>
-                            <div className="subBar">
-                                <span>CHOOSE {stage === 1 ? "SUBJECTS YOU'RE INTERESTED IN" : "YOUR LEVEL & INTEREST"}</span>
-                                <button className="nextButton" type="submit">{stage === 1 ? "NEXT" : "FINISH"}</button>
-                            </div>
-                            <div className={stage === 1 ? "gridContainer" : " d-none"}>
-                                {this.subjects.map(item =>
-                                    <div key={item} className="imageBox">
-                                        <span className="boxText">{item}</span>
-                                        <div className="round">
-                                            <input type="checkbox" id={item} defaultChecked={false} />
-                                            <label htmlFor={item}></label>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                            <div className={stage === 2 ? "" : " d-none"}>
-                                <input type="text" className="searchInput" placeholder="Search..." />
-                                <div className="levelsGrid">
-                                    {this.levels.map(item =>
-                                        <div key={item}>
+                        <div>
+                            <form onSubmit={this.handleSubmit.bind(this)} className={stage === 1 ? "" : " d-none"}>
+                                <div className="subBar">
+                                    <span>CHOOSE SUBJECTS YOU'RE INTERESTED IN</span>
+                                    <button className="nextButton" type="submit">NEXT</button>
+                                </div>
+                                <div className="gridContainer">
+                                    {this.subjects.map(item =>
+                                        <div key={item} className="imageBox">
+                                            <span className="boxText">{item}</span>
                                             <div className="round">
                                                 <input type="checkbox" id={item} defaultChecked={false} />
                                                 <label htmlFor={item}></label>
                                             </div>
-                                            <label className="clickable" htmlFor={item}>{item}</label>
                                         </div>
                                     )}
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                            <form onSubmit={this.handleSubmit.bind(this)} className={stage === 2 ? "" : " d-none"}>
+                                <div className="subBar">
+                                    <span>CHOOSE YOUR LEVEL & INTEREST</span>
+                                    <button className="nextButton" type="submit">FINISH</button>
+                                </div>
+                                <div>
+                                    <input type="text" className="searchInput" placeholder="Search..." />
+                                    <div className="levelsGrid">
+                                        {this.levels.map(item =>
+                                            <div key={item}>
+                                                <div className="round">
+                                                    <input type="checkbox" id={item} defaultChecked={false} />
+                                                    <label htmlFor={item}></label>
+                                                </div>
+                                                <label className="clickable" htmlFor={item}>{item}</label>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     }
                 </div>
             </div>
@@ -107,6 +114,6 @@ class Forum extends Component {
 }
 
 export default connect(
-    state => { },
+    null,
     { pushState: push }
 )(Forum);
