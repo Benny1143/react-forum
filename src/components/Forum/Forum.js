@@ -75,13 +75,15 @@ class Forum extends Component {
                                 </div>
                                 <div className="gridContainer">
                                     {this.subjects.map(item =>
-                                        <div key={item} className="imageBox">
-                                            <span className="boxText">{item}</span>
-                                            <div className="round">
-                                                <input type="checkbox" id={item} defaultChecked={false} />
-                                                <label htmlFor={item}></label>
+                                        <label htmlFor={item}>
+                                            <div key={item} className="imageBox">
+                                                <span className="boxText">{item}</span>
+                                                <div className="round">
+                                                    <input type="checkbox" id={item} defaultChecked={false} />
+                                                    <label htmlFor={item}></label>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </label>
                                     )}
                                 </div>
                             </form>
