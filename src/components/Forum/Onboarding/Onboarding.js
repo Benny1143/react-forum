@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { push } from 'connected-react-router';
-import './Onboarding.scss';
+import cx from 'classnames';
+import styles from './Onboarding.module.scss';
 
 class Forum extends Component {
     static propTypes = {
@@ -49,36 +50,40 @@ class Forum extends Component {
     render() {
         const stage = this.state.stage;
         return (
-            <div className="container mainContainer">
-                <div className="navRow">
+            <div className={cx(styles.mainContainer, "container")} >
+                <div className={styles.navRow}>
                     <div
-                        className={stage === 1 ? "selector" : "finished" + (stage === 2 ? " clickable" : "")}
+                        className={stage === 1 ? styles.selector : cx(styles.finished, stage === 2 && styles.clickable)}
                         onClick={this.backFirst.bind(this)}>
                         <span>1</span>
                     </div>
-                    <div className={"dash " + (stage === 1 ? "" : "highlight")}></div>
-                    <div className={stage === 1 ? "lock" : stage === 2 ? "selector" : "finished"}><span>2</span></div>
+                    <div className={cx(styles.dash, stage !== 1 && styles.highlight)}></div>
+                    <div className={stage === 1 ? styles.lock : stage === 2 ? styles.selector : styles.finished}>
+                        <span>2</span>
+                    </div>
                 </div>
                 <div className="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                    <div className="headingRow">
-                        <span className="headingText">{stage === 3 ? "Personalizing your feed." : "Welcome to the SmartGuppy Forum!"}</span>
-                        <p style={{ fontWeight: 600 }}>
+                    <div className={styles.headingRow}>
+                        <span className={styles.headingText}>
+                            {stage === 3 ? "Personalizing your feed." : "Welcome to the SmartGuppy Forum!"}
+                        </span>
+                        <p>
                             {"This " + (stage === 3 ? "will take a minute" : "is the palce where you can reach out to our vibrant community and ask questions.")}
                         </p>
                     </div>
                     {stage !== 3 &&
                         <div>
-                            <form onSubmit={this.handleSubmit.bind(this)} className={stage === 1 ? "" : " d-none"}>
-                                <div className="subBar">
+                            <form onSubmit={this.handleSubmit.bind(this)} className={cx(stage !== 1 && styles['d-none'])}>
+                                <div className={styles.subBar}>
                                     <span>CHOOSE SUBJECTS YOU'RE INTERESTED IN</span>
-                                    <button className="nextButton" type="submit">NEXT</button>
+                                    <button className={styles.nextButton} type="submit">NEXT</button>
                                 </div>
-                                <div className="gridContainer">
+                                <div className={styles.gridContainer}>
                                     {this.subjects.map(item =>
                                         <label htmlFor={item} key={item}>
-                                            <div className="imageBox">
-                                                <span className="boxText">{item}</span>
-                                                <div className="round">
+                                            <div className={styles.imageBox}>
+                                                <span className={styles.boxText}>{item}</span>
+                                                <div className={styles.round}>
                                                     <input type="checkbox" id={item} defaultChecked={false} />
                                                     <label htmlFor={item}></label>
                                                 </div>
@@ -87,21 +92,21 @@ class Forum extends Component {
                                     )}
                                 </div>
                             </form>
-                            <form onSubmit={this.handleSubmit.bind(this)} className={stage === 2 ? "" : " d-none"}>
-                                <div className="subBar">
+                            <form onSubmit={this.handleSubmit.bind(this)} className={cx(stage !== 2 && styles['d-none'])}>
+                                <div className={styles.subBar}>
                                     <span>CHOOSE YOUR LEVEL & INTEREST</span>
-                                    <button className="nextButton" type="submit">FINISH</button>
+                                    <button className={styles.nextButton} type="submit">FINISH</button>
                                 </div>
                                 <div>
-                                    <input type="text" className="searchInput" placeholder="Search..." />
-                                    <div className="levelsGrid">
+                                    <input type="text" className={styles.searchInput} placeholder="Search..." />
+                                    <div className={styles.levelsGrid}>
                                         {this.levels.map(item =>
                                             <div key={item}>
-                                                <div className="round">
+                                                <div className={styles.round}>
                                                     <input type="checkbox" id={item} defaultChecked={false} />
                                                     <label htmlFor={item}></label>
                                                 </div>
-                                                <label className="clickable" htmlFor={item}>{item}</label>
+                                                <label className={styles.clickable} htmlFor={item}>{item}</label>
                                             </div>
                                         )}
                                     </div>
@@ -110,7 +115,7 @@ class Forum extends Component {
                         </div>
                     }
                 </div>
-            </div>
+            </ div>
         )
     }
 }
