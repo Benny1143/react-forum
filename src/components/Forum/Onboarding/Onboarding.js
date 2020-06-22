@@ -39,7 +39,7 @@ class Forum extends Component {
                 const { subjects, levelsInterests } = this.state
                 console.log(subjects, levelsInterests)
                 //submit data to database
-                // this.props.pushState('/why-share');
+                setTimeout(_ => this.props.pushState('/forum'), 2000);
             }
         })
     }
@@ -75,8 +75,8 @@ class Forum extends Component {
                                 </div>
                                 <div className="gridContainer">
                                     {this.subjects.map(item =>
-                                        <label htmlFor={item}>
-                                            <div key={item} className="imageBox">
+                                        <label htmlFor={item} key={item}>
+                                            <div className="imageBox">
                                                 <span className="boxText">{item}</span>
                                                 <div className="round">
                                                     <input type="checkbox" id={item} defaultChecked={false} />
