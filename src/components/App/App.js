@@ -56,7 +56,7 @@ const Programmes = lazy(() => import('../Programmes/Programmes'));
 const WhyShare = lazy(() => import('../WhyShare/WhyShare'));
 const GetInvolved = lazy(() => import('../GetInvolved/GetInvolved'));
 const Donate = lazy(() => import('../Donate/Donate'));
-const Forum = lazy(() => import('../Forum/Forum'));
+const Forum = lazy(() => import('../Forum/ForumRouter'));
 
 class App extends Component {
   static propTypes = {
