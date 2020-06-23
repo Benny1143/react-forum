@@ -5,7 +5,7 @@ import { push } from 'connected-react-router';
 import cx from 'classnames';
 import styles from './Onboarding.module.scss';
 
-class Forum extends Component {
+class Onboarding extends Component {
     static propTypes = { pushState: PropTypes.func.isRequired };
 
     constructor() {
@@ -118,4 +118,4 @@ class Forum extends Component {
     }
 }
 
-export default connect(null, { pushState: push })(Forum);
+export default connect(null, { pushState: push })(Onboarding);
