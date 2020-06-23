@@ -92,8 +92,9 @@ $tablet: 768px;
 
 .subBar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-bottom: 40px;
+  flex-wrap: wrap;
 
   span {
     letter-spacing: normal;
@@ -120,6 +121,7 @@ $tablet: 768px;
     background-color: white;
     color: $theme_color;
     border: 2px solid $theme_color;
+    margin-right: 10px;
   }
 }
 
@@ -170,15 +172,14 @@ $tablet: 768px;
 
 .gridContainer {
   display: grid;
-
   column-gap: 20px;
   row-gap: 25px;
 
-  @media (max-width: 375px) {
+  @media (max-width: 380px) {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
 
-  @media (min-width: 375px) {
+  @media (min-width: 380px) {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 

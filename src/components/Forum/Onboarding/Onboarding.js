@@ -92,8 +92,10 @@ class Onboarding extends Component {
                             <form onSubmit={this.handleSubmit.bind(this)} className={cx(stage !== 2 && styles['d-none'])}>
                                 <div className={styles.subBar}>
                                     <span>CHOOSE YOUR LEVEL & INTEREST</span>
-                                    <button className={styles.backButton} type="button" onClick={this.backFirst.bind(this)}>BACK</button>
-                                    <button className={styles.nextButton} type="submit">FINISH</button>
+                                    <div style={{ display: "flex" }}>
+                                        <button className={styles.backButton} type="button" onClick={this.backFirst.bind(this)}>BACK</button>
+                                        <button className={styles.nextButton} type="submit">FINISH</button>
+                                    </div>
                                 </div>
                                 <div>
                                     <input type="text" className={styles.searchInput} placeholder="Search..." />
