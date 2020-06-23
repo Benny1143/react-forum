@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
-import './Forum.scss';
+import cx from 'classnames';
+import styles from './Forum.module.scss';
 
 class Forum extends Component {
     render() {
         return (
-            <div className="container mainContainer">
+            <div className={cx(styles.mainContainer, "container")}>
                 <div className="col-lg-2">
-                    <div className="shadow">
+                    <div className={styles.shadow}>
                         Left side
                     </div>
                 </div>
                 <div className="col-lg-8">
-                    <div style={{ textAlign: "center" }} className="cardlist">
-                        <div className="card">
+                    <div className={styles.cardlist}>
+                        <div className={styles.card}>
                             Main
                         </div>
                     </div>
                 </div>
                 <div className="col-lg-2">
-                    <div className="shadow">
+                    <div className={styles.shadow}>
                         Right side
                     </div>
                 </div>
