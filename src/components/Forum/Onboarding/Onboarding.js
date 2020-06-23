@@ -6,16 +6,15 @@ import cx from 'classnames';
 import styles from './Onboarding.module.scss';
 
 class Forum extends Component {
-    static propTypes = {
-        pushState: PropTypes.func.isRequired
-    };
+    static propTypes = { pushState: PropTypes.func.isRequired };
 
     constructor() {
         super()
         this.state = {
             subjects: [],
             levelsInterests: [],
-            stage: 1
+            stage: 1,
+            firstDone: false
         }
 
         this.subjects = ['ENGLISH', 'ENGLISH LIT.', 'HISTORY', 'E. MATH', 'MALAY', 'A. MATH', 'BIOLOGY', 'PHYSICS']
@@ -32,7 +31,7 @@ class Forum extends Component {
         event.preventDefault();
         const items = [...event.target.elements].filter(item => item.checked).map(item => item.id)
         this.setState(({ stage }) => {
-            let a = { stage: stage + 1 }
+            let a = { stage: stage + 1, firstDone: true }
             a[stage === 1 ? "subjects" : stage === 2 ? "levelsInterests" : ""] = items
             return a;
         }, () => {
@@ -48,17 +47,15 @@ class Forum extends Component {
     backFirst = () => this.state.stage === 2 && this.setState({ stage: 1 })
 
     render() {
-        const stage = this.state.stage;
+        const { stage, firstDone } = this.state;
         return (
             <div className={cx(styles.mainContainer, "container")} >
                 <div className={styles.navRow}>
-                    <div
-                        className={stage === 1 ? styles.selector : cx(styles.finished, stage === 2 && styles.clickable)}
-                        onClick={this.backFirst.bind(this)}>
+                    <div className={stage === 1 ? styles.selector : styles.finished}>
                         <span>1</span>
                     </div>
-                    <div className={cx(styles.dash, stage !== 1 && styles.highlight)}></div>
-                    <div className={stage === 1 ? styles.lock : stage === 2 ? styles.selector : styles.finished}>
+                    <div className={cx(styles.dash, firstDone && styles.highlight)}></div>
+                    <div className={!firstDone ? styles.lock : stage === 2 ? styles.selector : styles.finished}>
                         <span>2</span>
                     </div>
                 </div>
@@ -95,6 +92,7 @@ class Forum extends Component {
                             <form onSubmit={this.handleSubmit.bind(this)} className={cx(stage !== 2 && styles['d-none'])}>
                                 <div className={styles.subBar}>
                                     <span>CHOOSE YOUR LEVEL & INTEREST</span>
+                                    <button className={styles.backButton} type="button" onClick={this.backFirst.bind(this)}>BACK</button>
                                     <button className={styles.nextButton} type="submit">FINISH</button>
                                 </div>
                                 <div>
@@ -120,7 +118,4 @@ class Forum extends Component {
     }
 }
 
-export default connect(
-    null,
-    { pushState: push }
-)(Forum);
+export default connect(null, { pushState: push })(Forum);
