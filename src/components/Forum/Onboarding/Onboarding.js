@@ -14,7 +14,8 @@ class Onboarding extends Component {
             subjects: [],
             levelsInterests: [],
             stage: 1,
-            firstDone: false
+            firstDone: false,
+            filter: ""
         }
 
         this.subjects = ['ENGLISH', 'ENGLISH LIT.', 'HISTORY', 'E. MATH', 'MALAY', 'A. MATH', 'BIOLOGY', 'PHYSICS']
@@ -46,8 +47,11 @@ class Onboarding extends Component {
 
     backFirst = () => this.state.stage === 2 && this.setState({ stage: 1 })
 
+    search = (event) => this.setState({ filter: event.target.value.toLowerCase() })
+
     render() {
-        const { stage, firstDone } = this.state;
+        const { stage, firstDone, filter } = this.state;
+        const levels = this.levels.map(s => ({ item: s, display: s.toLowerCase().includes(filter) }));
         return (
             <div className={cx(styles.mainContainer, "container")} >
                 <div className={styles.navRow}>
@@ -98,10 +102,10 @@ class Onboarding extends Component {
                                     </div>
                                 </div>
                                 <div>
-                                    <input type="text" className={styles.searchInput} placeholder="Search..." />
+                                    <input type="text" className={styles.searchInput} placeholder="Search..." onChange={this.search.bind(this)} />
                                     <div className={styles.levelsGrid}>
-                                        {this.levels.map(item =>
-                                            <div key={item}>
+                                        {levels.map(({ item, display }) =>
+                                            <div key={item} className={display ? "" : styles['d-none']}>
                                                 <div className={styles.round}>
                                                     <input type="checkbox" id={item} defaultChecked={false} />
                                                     <label htmlFor={item}></label>
