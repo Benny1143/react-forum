@@ -1,0 +1,39 @@
+$theme_color: #3488bf;
+
+.mainContainer {
+  padding: 10px;
+
+  > span {
+    font-size: 0.7em;
+    font-weight: 700;
+    color: #aaaaaa;
+    letter-spacing: normal;
+    margin-top: 20px;
+
+    &:before {
+      content: '';
+      height: 14px;
+      display: block;
+    }
+  }
+
+  .listContainer {
+    display: grid;
+    grid-gap: 12px;
+    padding: 1px;
+  }
+}
+
+.sideItem {
+  div {
+    display: inline-block;
+    width: 16px;
+    margin-right: 10px;
+    text-align: center;
+  }
+}
+
+.highlight {
+  color: $theme_color;
+  font-weight: 700;
+}
