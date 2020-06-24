@@ -41,6 +41,11 @@ import config from 'config';
 import { mapEntityToKeyword } from 'utils/config';
 import styles from './App.module.scss';
 
+// Add Font Awesome Icon v5
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
+
 // const Home = lazy(() => import('../Home/Home'));
 const About = lazy(() => import('../About/About'));
 const Contact = lazy(() => import('../Contact/Contact'));
