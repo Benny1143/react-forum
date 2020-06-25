@@ -8,6 +8,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './LeftSideBar.module.scss';
 
 class SideItemComponent extends Component {
+    constructor() {
+        super()
+        this.goTo = this.goTo.bind(this)
+    }
+
     static propTypes = {
         pushState: PropTypes.func.isRequired,
         name: PropTypes.string.isRequired,
@@ -17,12 +22,12 @@ class SideItemComponent extends Component {
 
     static defaultProps = { path: undefined }
 
-    goTo = (location) => this.props.pushState(`/forum/${location}`)
+    goTo = (event) => this.props.pushState(`/forum/${event.currentTarget.dataset.tag || ""}`)
 
     render() {
         const { name, icon, path, match: { params: { to } } } = this.props
         return (
-            <div className={cx(styles.sideItem, to === path && styles.highlight)} onClick={() => this.goTo(path || "")}>
+            <div className={cx(styles.sideItem, to === path && styles.highlight)} onClick={this.goTo} data-tag={path}>
                 <div>
                     <FontAwesomeIcon icon={icon} />
                 </div>
@@ -59,7 +64,7 @@ class LeftSideBar extends Component {
             }].concat([{
                 name: 'All Topics',
                 icon: 'list'
-            }])
+            }]).map(a => ({ ...a, path: a.name.toLowerCase().replace(" ", "-") }))
         }
     }
 
@@ -70,8 +75,8 @@ class LeftSideBar extends Component {
                 <SideItem name="Personal Feed" icon="home" />
                 <span>YOUR SUBJECTS & INTERESTS</span>
                 <div className={styles.listContainer}>
-                    {items.map(({ name, icon }) =>
-                        <SideItem name={name} icon={icon} key={name} path={name.toLowerCase().replace(" ", "-")} />
+                    {items.map(({ name, icon, path }) =>
+                        <SideItem name={name} icon={icon} key={name} path={path} />
                     )}
                 </div>
             </div>
