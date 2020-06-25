@@ -26,6 +26,10 @@ class Onboarding extends Component {
             ...createLevels(2, 'JC'),
             'Exams Strategies', 'Sports CCAs', 'Uniformed Groups CCAs', 'Performing Arts CCAs'
         ]
+
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.backFirst = this.backFirst.bind(this)
+        this.search = this.search.bind(this)
     }
 
     handleSubmit(event) {
@@ -74,7 +78,7 @@ class Onboarding extends Component {
                     </div>
                     {stage !== 3 &&
                         <div>
-                            <form onSubmit={this.handleSubmit.bind(this)} className={cx(stage !== 1 && styles['d-none'])}>
+                            <form onSubmit={this.handleSubmit} className={cx(stage !== 1 && styles['d-none'])}>
                                 <div className={styles.subBar}>
                                     <span>CHOOSE SUBJECTS YOU'RE INTERESTED IN</span>
                                     <button className={styles.nextButton} type="submit">NEXT</button>
@@ -93,16 +97,16 @@ class Onboarding extends Component {
                                     )}
                                 </div>
                             </form>
-                            <form onSubmit={this.handleSubmit.bind(this)} className={cx(stage !== 2 && styles['d-none'])}>
+                            <form onSubmit={this.handleSubmit} className={cx(stage !== 2 && styles['d-none'])}>
                                 <div className={styles.subBar}>
                                     <span>CHOOSE YOUR LEVEL & INTEREST</span>
                                     <div style={{ display: "flex" }}>
-                                        <button className={styles.backButton} type="button" onClick={this.backFirst.bind(this)}>BACK</button>
+                                        <button className={styles.backButton} type="button" onClick={this.backFirst}>BACK</button>
                                         <button className={styles.nextButton} type="submit">FINISH</button>
                                     </div>
                                 </div>
                                 <div>
-                                    <input type="text" className={styles.searchInput} placeholder="Search..." onChange={this.search.bind(this)} />
+                                    <input type="text" className={styles.searchInput} placeholder="Search..." onChange={this.search} />
                                     <div className={styles.levelsGrid}>
                                         {levels.map(({ item, display }) =>
                                             <div key={item} className={display ? "" : styles['d-none']}>
