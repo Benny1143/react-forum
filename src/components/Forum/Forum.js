@@ -8,7 +8,7 @@ class Forum extends Component {
     render() {
         return (
             <div className={cx(styles.mainContainer, "container")}>
-                <div className="col-lg-2" style={{ padding: 10 }}>
+                <div className="col-lg-2" style={{ paddingRight: 10 }}>
                     <div className={styles.shadow}>
                         <LeftSideBar />
                     </div>

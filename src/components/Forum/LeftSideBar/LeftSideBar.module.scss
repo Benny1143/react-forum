@@ -25,11 +25,17 @@ $theme_color: #3488bf;
 }
 
 .sideItem {
+  cursor: pointer;
+
   div {
     display: inline-block;
     width: 16px;
     margin-right: 10px;
     text-align: center;
+  }
+
+  &:hover {
+    @extend .highlight;
   }
 }
 

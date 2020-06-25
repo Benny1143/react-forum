@@ -12,6 +12,7 @@ class ForumRouter extends Component {
             <Switch>
                 {/* <PrivateRoute path={`${url}/onboarding`} component={Onboarding} /> */}
                 <Route path={`${url}/onboarding`} component={Onboarding} />
+                <Route path={`${url}/:to`} component={Forum} />
                 <Route path={`${url}`} component={Forum} />
             </Switch>
         );
