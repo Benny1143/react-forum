@@ -7,7 +7,6 @@ import Forum from './Forum';
 class ForumRouter extends Component {
     render() {
         const { match: { url } } = this.props;
-
         return (
             <Switch>
                 {/* <PrivateRoute path={`${url}/onboarding`} component={Onboarding} /> */}
