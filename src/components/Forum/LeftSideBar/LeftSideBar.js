@@ -17,12 +17,13 @@ class SideItemComponent extends Component {
         pushState: PropTypes.func.isRequired,
         name: PropTypes.string.isRequired,
         icon: PropTypes.string.isRequired,
-        path: PropTypes.string
+        path: PropTypes.string,
+        match: PropTypes.shape({ params: PropTypes.shape({ to: PropTypes.string }) })
     }
 
     static defaultProps = { path: undefined }
 
-    goTo = (event) => this.props.pushState(event.currentTarget.dataset.tag ? `/forum/${event.currentTarget.dataset.tag}` : "/forum")
+    goTo = ({ currentTarget: { dataset: { tag } } }) => this.props.pushState('/forum' + (tag ? `/${tag}` : ""))
 
     render() {
         const { name, icon, path, match: { params: { to } } } = this.props
