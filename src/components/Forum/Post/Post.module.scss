@@ -1,0 +1,42 @@
+$theme_color: #3488bf;
+
+.post {
+  padding: 20px;
+  margin-bottom: 50px;
+
+  > div {
+    display: flex;
+    align-items: center;
+  }
+  > div:nth-child(1) {
+    > input {
+      padding: 0;
+      background: white;
+      border: 0;
+
+      &::placeholder {
+        color: #636363;
+      }
+    }
+  }
+
+  > div:nth-child(2) {
+    margin-top: 10px;
+    justify-content: space-between;
+
+    > button {
+      font-weight: 700;
+      border: none;
+      width: 90px;
+      min-width: 80px;
+      height: 35px;
+
+      background-color: $theme_color;
+      color: white;
+
+      &:disabled {
+        background-color: #c4c4c4;
+      }
+    }
+  }
+}
