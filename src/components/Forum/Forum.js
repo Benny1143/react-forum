@@ -20,8 +20,8 @@ class Forum extends Component {
                 <div className="col-lg-8">
                     <div className={styles.cardlist}>
                         <Switch>
-                            <Route path={`${baseURl}/:topic`} component={Topic} />
                             <Route path={`${baseURl}/all-topics`} component={AllTopics} />
+                            <Route path={`${baseURl}/:topic`} component={Topic} />
                             <Route path={`${baseURl}`} component={Post} />
                         </Switch>
                     </div>
