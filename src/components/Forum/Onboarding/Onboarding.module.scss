@@ -92,9 +92,16 @@ $tablet: 768px;
 
 .subBar {
   display: flex;
-  justify-content: flex-end;
   margin-bottom: 40px;
   flex-wrap: wrap;
+
+  @media (max-width: 600px) {
+    justify-content: flex-end;
+  }
+
+  @media (min-width: 600px) {
+    justify-content: space-between;
+  }
 
   span {
     letter-spacing: normal;
