@@ -22,7 +22,7 @@ class SideItemComponent extends Component {
 
     static defaultProps = { path: undefined }
 
-    goTo = (event) => this.props.pushState(`/forum/${event.currentTarget.dataset.tag || ""}`)
+    goTo = (event) => this.props.pushState(event.currentTarget.dataset.tag ? `/forum/${event.currentTarget.dataset.tag}` : "/forum")
 
     render() {
         const { name, icon, path, match: { params: { to } } } = this.props
