@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class UserImg extends Component {
+    static propTypes = {
+        user: PropTypes.shape({
+            avatar: PropTypes.string,
+            name: PropTypes.string
+        })
+    };
+
     render() {
-        const { user: { avatar, name } } = this.props
+        const { avatar, name } = this.props.users || {}
         return (
             <div className="cs-user-login">
                 <div className="cs-media" style={{ marginLeft: 0, width: 20 }}>
