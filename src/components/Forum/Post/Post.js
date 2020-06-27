@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { card } from '../Forum.module.scss';
 import styles from './Post.module.scss';
 import UserImg from '../UserImg/UserImg';
+import Postcard from '../Postcard/Postcard';
 
 class Post extends Component {
     constructor() {
@@ -19,6 +20,42 @@ class Post extends Component {
 
     render() {
         const input = this.state.input;
+
+        const cards = [
+            {
+                title: "How do you do well for “N” Levels?",
+                time: "10 days",
+                name: "Shen Loke",
+                tags: [
+                    "sec 4 na",
+                    "exam strategies",
+                    "sec 4 na"
+                ],
+                highlight: true,
+                stats: {
+                    votes: 30,
+                    answers: 20,
+                    views: 400
+                }
+            },
+            {
+                title: "What are the study habits a visual learner can pick up to score better and enjoy studying?",
+                time: "10 days",
+                name: "Shen Loke",
+                tags: [
+                    "sec 4 na",
+                    "exam strategies",
+                    "sec 4 na"
+                ],
+                highlight: true,
+                stats: {
+                    votes: 30,
+                    answers: 20,
+                    views: 400
+                }
+            }
+        ]
+
         return (
             <div>
                 <div className={cx(card, styles.post)}>
@@ -36,9 +73,7 @@ class Post extends Component {
                         <button onClick={this.handlePost} disabled={!input}>POST</button>
                     </div>
                 </div>
-                <div className={card}>
-                    List
-                </div>
+                {cards.map((details, i) => <Postcard key={i} details={details} />)}
             </div>
         )
     }
