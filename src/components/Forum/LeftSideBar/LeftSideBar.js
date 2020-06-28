@@ -62,10 +62,7 @@ class LeftSideBar extends Component {
             }, {
                 name: 'CCA',
                 icon: 'swimmer'
-            }].concat([{
-                name: 'All Topics',
-                icon: 'list'
-            }]).map(a => ({ ...a, path: a.name.toLowerCase().replace(" ", "-") }))
+            }].map(a => ({ ...a, path: a.name.toLowerCase().replace(" ", "-") }))
         }
     }
 
@@ -76,9 +73,8 @@ class LeftSideBar extends Component {
                 <SideItem name="Personal Feed" icon="home" />
                 <span>YOUR SUBJECTS & INTERESTS</span>
                 <div className={styles.listContainer}>
-                    {items.map(({ name, icon, path }) =>
-                        <SideItem name={name} icon={icon} key={name} path={path} />
-                    )}
+                    {items.map(({ name, icon, path }) => <SideItem name={name} icon={icon} key={name} path={path} />)}
+                    <SideItem name="All Topics" icon="list" path='all-topics' />
                 </div>
             </div>
         )
