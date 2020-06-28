@@ -23,35 +23,51 @@ class Post extends Component {
 
         const cards = [
             {
-                title: "How do you do well for “N” Levels?",
-                time: "10 days",
-                name: "Shen Loke",
-                tags: [
-                    "sec 4 na",
-                    "exam strategies",
-                    "sec 4 na"
-                ],
-                highlight: true,
-                stats: {
-                    votes: 30,
-                    answers: 20,
-                    views: 400
+                question: {
+                    title: "How do you do well for “N” Levels?",
+                    time: "10 days",
+                    name: "Shen Loke",
+                    tags: [
+                        "sec 4 na",
+                        "exam strategies",
+                        "sec 4 na"
+                    ],
+                    highlight: true,
+                    stats: {
+                        votes: 30,
+                        answers: 20,
+                        views: 400
+                    }
                 }
             },
             {
-                title: "What are the study habits a visual learner can pick up to score better and enjoy studying?",
-                time: "10 days",
-                name: "Shen Loke",
-                tags: [
-                    "sec 4 na",
-                    "exam strategies",
-                    "sec 4 na"
-                ],
-                highlight: true,
-                stats: {
-                    votes: 30,
-                    answers: 20,
-                    views: 400
+                question: {
+                    title: "What are the study habits a visual learner can pick up to score better and enjoy studying?",
+                    time: "10 days",
+                    name: "Shen Loke",
+                    tags: [
+                        "sec 4 na",
+                        "exam strategies",
+                        "sec 4 na"
+                    ],
+                    highlight: true,
+                    stats: {
+                        votes: 30,
+                        answers: 20,
+                        views: 400
+                    }
+                },
+                answer: {
+                    answer: `For an all-rounded strategy I'll be discussing: 
+                    \n  1. How to make the most out of class 
+                    \n  2. How to take notes effectively (visually!)`,
+                    time: "10 mins",
+                    name: "Benny Goh",
+                    tags: ["learning styles"],
+                    stats: {
+                        votes: 1,
+                        views: 10
+                    }
                 }
             }
         ]
