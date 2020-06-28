@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import TopicHeader from '../TopicHeader/TopicHeader';
 
 class AllTopics extends Component {
-    render() {
+    render() {        
         return (
             <div>
-                All Topics
+                <TopicHeader text="SmartGuppy Forum - All Topics"/>
             </div>
         )
     }
