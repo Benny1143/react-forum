@@ -26,14 +26,21 @@ $theme_color: #3488bf;
       position: relative;
 
       .answer {
-        color: $theme_color;
         font-weight: 700;
         font-size: 16px;
-
         position: absolute;
-        top: -22px;
+        margin-top: 10px;
         left: 0;
         right: 0;
+
+        > div {
+          background-color: $theme_color;
+          display: inline-block;
+          color: white;
+          padding: 5px;
+          font-size: 12.5px;
+          line-height: 12px;
+        }
       }
 
       .stats {
@@ -73,8 +80,36 @@ $theme_color: #3488bf;
 
       .answer {
         white-space: pre-wrap;
-        line-height: 10px;
+        line-height: 18px;
         color: black;
+        position: relative;
+
+        &.more {
+          > div:last-child {
+            position: relative;
+
+            &:after {
+              content: ' ';
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              left: 0;
+              bottom: -2px;
+              background: linear-gradient(
+                0deg,
+                #ffffff 0%,
+                rgba(255, 255, 255, 0.4) 100%
+              );
+            }
+          }
+        }
+      }
+
+      .readmore {
+        color: $theme_color;
+        font-weight: bold;
+        line-height: 16px;
+        cursor: pointer;
       }
 
       .description {

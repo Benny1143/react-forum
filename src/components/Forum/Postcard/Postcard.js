@@ -26,7 +26,6 @@ class Stats extends Component {
         const { stats: { votes = 0, views = 0, answers = 0, comments = 0 }, question } = this.props
         return (
             <div className={styles.mainStats}>
-                {!question && <div className={styles.answer}>Latest Answer: </div>}
                 <div className={styles.stats}>
                     <div>
                         <div>{votes}</div>
@@ -41,12 +40,27 @@ class Stats extends Component {
                         <div>views</div>
                     </div>
                 </div>
+                {!question && <div className={styles.answer}><div>Latest Answer</div></div>}
             </div>
         )
     }
 }
 
 class Card extends Component {
+    constructor(props) {
+        super(props)
+        const { question } = props
+        if (!question) {
+            const answer = props.details.answer.split("\n")
+            this.state = {
+                displayMore: false,
+                answer: answer.slice(0, 3),
+                more: answer.length > 3 && answer.slice(3)
+            }
+        }
+        this.readMore = this.readMore.bind(this)
+    }
+
     static propTypes = {
         question: PropTypes.bool.isRequired,
         details: PropTypes.shape({
@@ -62,16 +76,21 @@ class Card extends Component {
 
     static defaultProps = { question: true }
 
+    readMore = _ => this.setState(({ displayMore }) => ({ displayMore: !displayMore }))
+
     render() {
-        const { details: { time, name, tags = [], highlight, title, answer, stats }, question } = this.props
+        const { details: { time, name, tags = [], highlight, title, stats }, question } = this.props
+        const { answer, more, displayMore } = this.state || {}
         return (
             <div className={styles.mainCard}>
                 <Stats stats={stats} question={question} />
                 <div className={styles.details}>
                     {question
                         ? <div className={styles.title}><Link to="/forum/onboarding">{title}</Link></div>
-                        : <div className={styles.answer}><span>{answer}</span></div>
-                    }
+                        : <div className={cx(styles.answer, more && !displayMore && styles.more)}>
+                            {(displayMore ? answer.concat(more) : answer).map((text, i) => <div key={i}>{text}</div>)}
+                        </div>}
+                    {more && <div className={styles.readmore} onClick={this.readMore}>Read {displayMore ? "Less" : "More"}</div>}
                     <div className={styles.description}>
                         <div className={styles.tagContainer}>{tags.map((tag, i) => <div key={i}>{tag}</div>)}</div>
                         <div className={styles.information}>

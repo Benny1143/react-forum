@@ -58,7 +58,7 @@ class Post extends Component {
                     }
                 },
                 answer: {
-                    answer: "For an all-rounded strategy I'll be discussing: \n  1. How to make the most out of class \n  2. How to take notes effectively (visually!)",
+                    answer: "For an all-rounded strategy I'll be discussing: \n  1. How to make the most out of class \n  2. How to take notes effectively (visually!) \n  3. Something \n  4. Something More",
                     time: "10 mins",
                     name: "Benny Goh",
                     tags: ["learning styles"],
