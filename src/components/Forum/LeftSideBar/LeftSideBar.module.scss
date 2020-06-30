@@ -27,6 +27,7 @@ $theme_color: #3488bf;
 
 .sideItem {
   cursor: pointer;
+  text-decoration: none !important;
 
   div {
     display: inline-block;
@@ -41,6 +42,6 @@ $theme_color: #3488bf;
 }
 
 .highlight {
-  color: $theme_color;
+  color: $theme_color !important;
   font-weight: 700;
 }

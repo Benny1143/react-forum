@@ -6,13 +6,10 @@ import { withRouter } from 'react-router';
 import cx from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './LeftSideBar.module.scss';
+import { topicToObject } from '../TopicList';
+import { Link } from 'react-router-dom';
 
 class SideItemComponent extends Component {
-    constructor() {
-        super()
-        this.goTo = this.goTo.bind(this)
-    }
-
     static propTypes = {
         pushState: PropTypes.func.isRequired,
         name: PropTypes.string.isRequired,
@@ -23,17 +20,15 @@ class SideItemComponent extends Component {
 
     static defaultProps = { path: undefined }
 
-    goTo = ({ currentTarget: { dataset: { tag } } }) => this.props.pushState('/forum' + (tag ? `/${tag}` : ""))
-
     render() {
-        const { name, icon, path, match: { params: { to } } } = this.props
+        const { name, icon, path, match: { url } } = this.props
         return (
-            <div className={cx(styles.sideItem, to === path && styles.highlight)} onClick={this.goTo} data-tag={path}>
+            <Link className={cx(styles.sideItem, url === path && styles.highlight)} to={path || '/forum'}>
                 <div>
                     <FontAwesomeIcon icon={icon} />
                 </div>
                 <span>{name}</span>
-            </div>
+            </Link>
         )
     }
 }
@@ -43,27 +38,7 @@ const SideItem = withRouter(connect(null, { pushState: push })(SideItemComponent
 class LeftSideBar extends Component {
     constructor() {
         super()
-        this.state = {
-            items: [{
-                name: 'Physics',
-                icon: 'apple-alt'
-            }, {
-                name: 'Chemistry',
-                icon: 'flask'
-            }, {
-                name: 'Biology',
-                icon: 'biohazard'
-            }, {
-                name: 'Learning Styles',
-                icon: 'graduation-cap'
-            }, {
-                name: 'Writing Tips',
-                icon: 'pencil-alt'
-            }, {
-                name: 'CCA',
-                icon: 'swimmer'
-            }].map(a => ({ ...a, path: a.name.toLowerCase().replace(" ", "-") }))
-        }
+        this.state = { items: topicToObject(['Physics', 'Chemistry', 'Biology', 'Learning Styles', 'Writing Tips', 'CCA']) }
     }
 
     render() {
@@ -74,7 +49,7 @@ class LeftSideBar extends Component {
                 <span>YOUR SUBJECTS & INTERESTS</span>
                 <div className={styles.listContainer}>
                     {items.map(({ name, icon, path }) => <SideItem name={name} icon={icon} key={name} path={path} />)}
-                    <SideItem name="All Topics" icon="list" path='all-topics' />
+                    <SideItem name="All Topics" icon="list" path='/forum/all-topics' />
                 </div>
             </div>
         )
