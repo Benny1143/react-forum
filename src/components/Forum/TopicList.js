@@ -26,8 +26,9 @@ const topicList = [{
     name: 'Secondary School',
     icon: 'graduation-cap'
 }]
-
+const translateToPath = name => name.toLowerCase().replace(" ", "-")
 export const icon = name => topicList.find(e => e.name === name).icon;
-export const path = name => `/forum/${name.toLowerCase().replace(" ", "-")}`
-export const topicToObject = arr => arr.map(name => ({ name, path: `/forum/${name.toLowerCase().replace(" ", "-")}`, icon: icon(name) }))
+export const path = name => `/forum/${translateToPath(name)}`
+export const topicToObject = arr => arr.map(name => ({ name, path: path(name), icon: icon(name) }))
 export const topics = topicList.map(e => ({ ...e, path: path(e.name) }))
+export const pathToName = path => topicList.find(({ name }) => translateToPath(name) === path).name
