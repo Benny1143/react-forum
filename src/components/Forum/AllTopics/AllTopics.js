@@ -56,11 +56,27 @@ class Topic extends Component {
 }
 
 class AllTopics extends Component {
+    constructor() {
+        super()
+        this.state = {
+            search: "",
+            select: "sub"
+        }
+        this.search = this.search.bind(this)
+        this.select = this.select.bind(this)
+    }
+
+    search = search => this.setState({ search });
+    
+    select = select => this.setState({ select });
+
     render() {
+        const { search, select } = this.state
+        const list = topics.filter(({ name }) => name.toLowerCase().includes(search))
         return (
             <div>
-                <TopicHeader text="SmartGuppy Forum - All Topics" />
-                {topics.map(({ name, icon, path }, i) => <Topic name={name} icon={icon} path={path} key={i} />)}
+                <TopicHeader text="SmartGuppy Forum - All Topics" search={this.search} select={this.select} />
+                {list.map(({ name, icon, path }, i) => <Topic name={name} icon={icon} path={path} key={i} />)}
             </div>
         )
     }

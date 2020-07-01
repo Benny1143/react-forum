@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './TopicHeader.module.scss';
 
@@ -16,13 +17,24 @@ class TopicHeader extends Component {
         this.search = this.search.bind(this)
     }
 
+    static propTypes = {
+        search: PropTypes.func,
+        select: PropTypes.func
+    }
+
     dropdown = _ => this.setState(({ dropdown }) => ({ dropdown: !dropdown }))
 
     dropdownBlur = _ => this.setState({ dropdown: false })
 
-    select = ({ currentTarget: { value } }) => this.setState({ select: value })
+    select = ({ currentTarget: { value: select } }) => {
+        this.setState({ select })
+        this.props.select(select)
+    }
 
-    search = ({ target: { value } }) => this.setState({ search: value })
+    search = ({ target: { value: search } }) => {
+        this.setState({ search })
+        this.props.search(search)
+    }
 
     render() {
         const { text } = this.props
