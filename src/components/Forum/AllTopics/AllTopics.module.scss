@@ -1,0 +1,71 @@
+$theme_color: #3488bf;
+$unselect_grey: #aaaaaa;
+
+.topic {
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: normal;
+  margin-bottom: 18px;
+  padding: 20px;
+
+  > div {
+    display: flex;
+    align-items: center;
+  }
+
+  > div:first-child {
+    > a {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      margin-right: 20px;
+      text-decoration: none;
+      color: $unselect_grey;
+
+      &:hover {
+        color: $theme_color;
+        font-weight: bold;
+      }
+
+      &.highlight {
+        color: $theme_color;
+      }
+
+      > svg {
+        margin-right: 14px;
+        width: 20px;
+      }
+    }
+
+    > div {
+      font-size: 12px;
+    }
+  }
+
+  > div:last-child {
+    > .stats {
+      text-align: center;
+      margin-right: 22px;
+
+      > div:first-child {
+        font-size: 20px;
+      }
+
+      > div:last-child {
+        font-size: 12px;
+        line-height: 12px;
+      }
+    }
+
+    > svg {
+      font-size: 15px;
+      margin-left: 8px;
+      color: $unselect_grey;
+      cursor: pointer;
+
+      &.highlight {
+        color: $theme_color;
+      }
+    }
+  }
+}
