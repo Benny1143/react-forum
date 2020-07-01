@@ -14,8 +14,8 @@ class SideItemComponent extends Component {
         pushState: PropTypes.func.isRequired,
         name: PropTypes.string.isRequired,
         icon: PropTypes.string.isRequired,
-        path: PropTypes.string,
-        match: PropTypes.shape({ params: PropTypes.shape({ to: PropTypes.string }) })
+        path: PropTypes.string.isRequired,
+        match: PropTypes.shape({ url: PropTypes.string.isRequired })
     }
 
     static defaultProps = { path: undefined }
@@ -23,7 +23,7 @@ class SideItemComponent extends Component {
     render() {
         const { name, icon, path, match: { url } } = this.props
         return (
-            <Link className={cx(styles.sideItem, url === path && styles.highlight)} to={path || '/forum'}>
+            <Link className={cx(styles.sideItem, url === path && styles.highlight)} to={path}>
                 <div>
                     <FontAwesomeIcon icon={icon} />
                 </div>
@@ -45,7 +45,7 @@ class LeftSideBar extends Component {
         const { items } = this.state
         return (
             <div className={styles.mainContainer}>
-                <SideItem name="Personal Feed" icon="home" />
+                <SideItem name="Personal Feed" icon="home" path="/forum" />
                 <span>YOUR SUBJECTS & INTERESTS</span>
                 <div className={styles.listContainer}>
                     {items.map(({ name, icon, path }) => <SideItem name={name} icon={icon} key={name} path={path} />)}
