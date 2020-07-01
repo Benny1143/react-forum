@@ -7,5 +7,45 @@ $theme_color: #3488bf;
     font-weight: bold;
     font-size: 28px;
     color: $theme_color;
+    line-height: 34px;
+  }
+
+  .form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+
+    > input {
+      border: 2px solid #636363;
+      max-width: 300px;
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      > label {
+        white-space: nowrap;
+        margin-right: 16px;
+      }
+
+      > select {
+        min-width: 130px;
+        border: 2px solid #636363;
+        background-color: rgba(0, 0, 0, 0);
+        z-index: 1;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+
+      > svg {
+        position: absolute;
+        right: 10px;
+        z-index: 0;
+      }
+    }
   }
 }
