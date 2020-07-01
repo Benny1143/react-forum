@@ -60,14 +60,14 @@ class AllTopics extends Component {
         super()
         this.state = {
             search: "",
-            select: "sub"
+            select: "active"
         }
         this.search = this.search.bind(this)
         this.select = this.select.bind(this)
     }
 
     search = search => this.setState({ search });
-    
+
     select = select => this.setState({ select });
 
     render() {
@@ -76,7 +76,7 @@ class AllTopics extends Component {
         return (
             <div>
                 <TopicHeader text="SmartGuppy Forum - All Topics" search={this.search} select={this.select} />
-                {list.map(({ name, icon, path }, i) => <Topic name={name} icon={icon} path={path} key={i} />)}
+                {list.map(({ name, icon, path }) => <Topic name={name} icon={icon} path={path} key={name} />)}
             </div>
         )
     }

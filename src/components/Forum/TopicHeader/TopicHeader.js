@@ -8,7 +8,7 @@ class TopicHeader extends Component {
         super()
         this.state = {
             dropdown: false,
-            select: "sub",
+            select: "active",
             search: ""
         }
         this.dropdown = this.dropdown.bind(this)
@@ -47,8 +47,8 @@ class TopicHeader extends Component {
                     <div>
                         <label htmlFor="dropdown">Sort By</label>
                         <select id="dropdown" onClick={this.dropdown} onBlur={this.dropdownBlur} onChange={this.select} value={select}>
-                            <option value="sub">Subscription</option>
                             <option value="active">Last Active</option>
+                            <option value="sub">Subscription</option>
                         </select>
                         <FontAwesomeIcon icon={"chevron-" + (dropdown ? "up" : "down")} />
                     </div>
