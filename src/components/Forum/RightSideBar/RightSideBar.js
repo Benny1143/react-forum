@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import cx from 'classnames';
 import styles from './RightSideBar.module.scss';
 import { card } from '../Forum.module.scss';
@@ -53,7 +54,7 @@ class SideBar extends Component {
                 <div className={cx(styles.tutors, card)}>
                     <div>This Week's Top Tutors</div>
                     <div>
-                        {this.state.top.map((name, i) => <div><span>{i + 1}</span><UserImg />{name}</div>)}
+                        {this.state.top.map((name, i) => <div key={name}><span>{i + 1}</span><UserImg />{name}</div>)}
                     </div>
                 </div>
                 <div className={cx(styles.text, card)}>
@@ -73,13 +74,14 @@ class SideBar extends Component {
 
 class RightSideBar extends Component {
     render() {
-        const settingup = false
+        const { match: { url } } = this.props
+        const settingUpDone = false
         return (
             <div className={styles.mainContainer}>
-                {settingup ? <SettingUp /> : <SideBar />}
+                {url === '/forum' && !settingUpDone ? <SettingUp /> : <SideBar />}
             </div>
         )
     }
 }
 
-export default RightSideBar;
+export default withRouter(RightSideBar);
