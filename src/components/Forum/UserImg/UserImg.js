@@ -7,11 +7,15 @@ class UserImg extends Component {
         user: PropTypes.shape({
             avatar: PropTypes.string,
             name: PropTypes.string
+        }),
+        alt: PropTypes.shape({
+            avatar: PropTypes.string,
+            name: PropTypes.string
         })
     };
 
     render() {
-        const { avatar, name } = this.props.users || {}
+        const { avatar, name } = this.props.alt || this.props.user || {}
         return (
             <div className="cs-user-login">
                 <div className="cs-media" style={{ marginLeft: 0, width: 20 }}>

@@ -45,16 +45,32 @@ class SideBar extends Component {
     constructor() {
         super()
         this.state = {
-            top: ["Shen Loke", "Aloha Two", "Jenny Lin", "Random Person 1", "Kenneth Wong"]
+            top: [{
+                name: "Shen Loke",
+                avatar: ""
+            }, {
+                name: "Aloha Two",
+                avatar: ""
+            }, {
+                name: "Jenny Lin",
+                avatar: ""
+            }, {
+                name: "Random Person 1",
+                avatar: ""
+            }, {
+                name: "Kenneth Wong",
+                avatar: ""
+            }]
         }
     }
+
     render() {
         return (
             <div>
                 <div className={cx(styles.tutors, card)}>
                     <div>This Week's Top Tutors</div>
                     <div>
-                        {this.state.top.map((name, i) => <div key={name}><span>{i + 1}</span><UserImg />{name}</div>)}
+                        {this.state.top.map(({ name, avatar }, i) => <div key={name}><span>{i + 1}</span><UserImg alt={{ name, avatar }} />{name}</div>)}
                     </div>
                 </div>
                 <div className={cx(styles.text, card)}>
