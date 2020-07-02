@@ -6,6 +6,7 @@ import LeftSideBar from './LeftSideBar/LeftSideBar';
 import Post from './Post/Post'
 import AllTopics from './AllTopics/AllTopics';
 import Topic from './Topic/Topic';
+import RightSideBar from './RightSideBar/RightSideBar';
 
 class Forum extends Component {
     render() {
@@ -26,10 +27,8 @@ class Forum extends Component {
                         </Switch>
                     </div>
                 </div>
-                <div className="col-lg-2">
-                    <div className={styles.shadow}>
-                        Right side
-                    </div>
+                <div className="col-lg-2" style={{ paddingLeft: 10 }}>
+                    <RightSideBar />
                 </div>
             </div>
         );

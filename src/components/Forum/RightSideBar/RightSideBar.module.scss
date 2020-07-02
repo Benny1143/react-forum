@@ -1,0 +1,103 @@
+$theme_color: #3488bf;
+%cardspacing {
+  padding: 14px 16px;
+}
+
+.mainContainer {
+  letter-spacing: normal;
+
+  .settingup {
+    @extend %cardspacing;
+
+    > div:first-child {
+      color: #aaaaaa;
+      font-size: 10px;
+      line-height: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    > div:last-child > div {
+      margin: 11px 0;
+      display: flex;
+      align-items: center;
+
+      > svg {
+        margin-right: 12px;
+        padding: 2px;
+        font-size: 15px;
+        border-radius: 4px;
+        color: white;
+        background-color: #3488bf;
+
+        &.unselect {
+          border: 1.3px solid #636363;
+          background-color: rgba(0, 0, 0, 0);
+        }
+      }
+
+      > span {
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
+  }
+
+  > div {
+    > .tutors {
+      @extend %cardspacing;
+
+      > div:first-child {
+        color: $theme_color;
+        font-size: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      > div:last-child > div {
+        display: flex;
+        align-items: center;
+        line-height: 16px;
+        font-size: 12px;
+        margin: 6px 0;
+        color: #636363;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+
+        > span {
+          color: $theme_color;
+          font-weight: bold;
+          font-size: 10px;
+          margin-right: 11px;
+        }
+
+        > div > div {
+          height: 24px !important;
+          width: 24px !important;
+        }
+      }
+    }
+
+    .text {
+      @extend %cardspacing;
+      margin-top: 30px;
+      padding-right: 15px;
+
+      > div:first-child {
+        font-size: 10px;
+        line-height: 14px;
+        color: #aaaaaa;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      > div:last-child {
+        font-size: 12px;
+        line-height: 16px;
+        color: #636363;
+      }
+    }
+  }
+}
