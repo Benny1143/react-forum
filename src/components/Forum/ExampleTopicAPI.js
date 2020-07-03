@@ -45,11 +45,49 @@ const posts = [{
             views: 10
         }
     }]
+},
+{
+    topic: "Secondary School",
+    question: {
+        title: "Confused by Graphing Techniques",
+        time: "10 mins",
+        name: "Jane Low",
+        tags: [
+            "sec 4 exp",
+            "e.math",
+            "graphs"
+        ],
+        subscribe: false,
+        stats: {
+            votes: 0,
+            answers: 0,
+            views: 10
+        }
+    }
+},
+{
+    topic: "Secondary School",
+    question: {
+        title: "What’s the trick to answering “Area Under Graph” questions?",
+        time: "15 mins",
+        name: "Ken Leow",
+        tags: [
+            "sec 4 exp",
+            "a.math",
+            "exams strategies"
+        ],
+        subscribe: false,
+        stats: {
+            votes: 3,
+            answers: 1,
+            views: 10
+        }
+    }
 }]
 
 
 export const searchPost = (topic, search = null, select = null) => {
-    return []
+    return posts.filter(post => post.topic === topic)
 }
 
 export const homeFeed = _ => posts.filter(({ question: { subscribe } }) => subscribe)
