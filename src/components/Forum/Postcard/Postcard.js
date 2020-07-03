@@ -69,7 +69,7 @@ class Card extends Component {
             name: PropTypes.string.isRequired,
             title: PropTypes.string,
             answer: PropTypes.string,
-            highlight: PropTypes.bool,
+            subscribe: PropTypes.bool,
             stats: PropTypes.object.isRequired
         })
     }
@@ -79,7 +79,7 @@ class Card extends Component {
     readMore = _ => this.setState(({ displayMore }) => ({ displayMore: !displayMore }))
 
     render() {
-        const { details: { time, name, tags = [], highlight, title, stats }, question } = this.props
+        const { details: { time, name, tags = [], subscribe, title, stats }, question } = this.props
         const { answer, more, displayMore } = this.state || {}
         return (
             <div className={styles.mainCard}>
@@ -94,7 +94,7 @@ class Card extends Component {
                     <div className={styles.description}>
                         <div className={styles.tagContainer}>{tags.map((tag, i) => <div key={i}>{tag}</div>)}</div>
                         <div className={styles.information}>
-                            {question && <FontAwesomeIcon icon="rss" className={cx(highlight && styles.highlight)} />}
+                            {question && <FontAwesomeIcon icon="rss" className={cx(subscribe && styles.highlight)} />}
                             <span>{question ? "asked" : "answered"} {time} ago by <Link to={`/user/${name}`}>{name}</Link></span>
                         </div>
                     </div>
