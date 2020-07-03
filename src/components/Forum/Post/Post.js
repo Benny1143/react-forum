@@ -21,7 +21,7 @@ class Post extends Component {
 
     render() {
         const input = this.state.input;
-        const cards = homeFeed()
+        const posts = homeFeed()
         return (
             <div>
                 <div className={cx(card, styles.post)}>
@@ -39,7 +39,7 @@ class Post extends Component {
                         <button onClick={this.handlePost} disabled={!input}>POST</button>
                     </div>
                 </div>
-                {cards.map((details, i) => <Postcard key={i} details={details} />)}
+                {posts.map((post, i) => <Postcard key={i} post={post} />)}
             </div>
         )
     }

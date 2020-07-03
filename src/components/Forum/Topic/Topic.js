@@ -37,7 +37,7 @@ class Topic extends Component {
             <div>
                 <TopicHeader text={title} />
                 {posts && posts.length > 0
-                    ? posts.map(post => <Postcard key={post.question.title} details={post} />)
+                    ? posts.map(post => <Postcard key={post.question.title} post={post} />)
                     : <div>No post</div>}
             </div>
         )

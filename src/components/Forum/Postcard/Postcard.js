@@ -106,10 +106,10 @@ class Card extends Component {
 }
 
 class Postcard extends Component {
-    static propTypes = { details: PropTypes.shape({ question: PropTypes.object.isRequired, answer: PropTypes.object }) }
+    static propTypes = { post: PropTypes.shape({ question: PropTypes.object.isRequired, answer: PropTypes.object }) }
 
     render() {
-        const { details: { question, answer } } = this.props
+        const { post: { question, answer } } = this.props
         return (
             <div className={cx(card, styles.mainContainer)}>
                 <Card details={question} />
