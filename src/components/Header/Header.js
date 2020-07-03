@@ -262,6 +262,9 @@ class Header extends Component {
                         </a>
                       </li>
                     )}
+                    <NavItem to="/forum" className="hidden-xs hidden-sm">
+                      Forum
+                    </NavItem>
                     {user && (
                       <li>
                         <div className="cs-user-login">

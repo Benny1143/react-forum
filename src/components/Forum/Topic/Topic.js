@@ -47,10 +47,10 @@ class Topic extends Component {
     }
 
     render() {
-        const { posts, title } = this.state
+        const { posts, title, search, select } = this.state
         return (
             <div>
-                <TopicHeader text={title} search={this.onSearch} select={this.onSelect} />
+                <TopicHeader text={title} search={this.onSearch} searchVal={search} select={this.onSelect} selectVal={select} />
                 {posts && posts.length > 0
                     ? posts.map(post => <Postcard key={post.question.title} post={post} />)
                     : <div>No post</div>}
