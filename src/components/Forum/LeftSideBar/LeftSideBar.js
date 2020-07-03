@@ -38,7 +38,7 @@ const SideItem = withRouter(connect(null, { pushState: push })(SideItemComponent
 class LeftSideBar extends Component {
     constructor() {
         super()
-        this.state = { items: topicToObject(['Physics', 'Chemistry', 'Biology', 'Learning Styles', 'Writing Tips', 'CCA']) }
+        this.state = { items: topicToObject(['Physics', 'Chemistry', 'Biology', 'Learning Styles', 'Writing Tips', 'CCA', 'Secondary School']) }
     }
 
     render() {
