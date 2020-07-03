@@ -8,20 +8,35 @@ class Topic extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            topic: "",
             title: "",
             posts: [],
             search: "",
             select: "active"
         }
+        this.onSearch = this.onSearch.bind(this)
+        this.onSelect = this.onSelect.bind(this)
     }
 
+
     loadTopic() {
-        const topic = pathToName(this.props.match.params.topic);
-        this.setState(({ search, select }) => ({
-            posts: searchPost(topic, search, select),
-            title: `${topic} Discussion`
-        }))
+        const topic = pathToName(this.props.match.params.topic)
+        this.setState({
+            topic,
+            posts: searchPost(topic),
+            title: `${topic} Discussion`,
+            search: "",
+            select: "active"
+        })
     }
+
+    onSearch = search => this.setState(({ topic, select }) => ({
+        search, posts: searchPost(topic, search, select)
+    }));
+
+    onSelect = select => this.setState(({ topic, search }) => ({
+        select, posts: searchPost(topic, search, select)
+    }));
 
     componentDidUpdate(prevProps) {
         if (this.props.match.params.topic !== prevProps.match.params.topic) this.loadTopic()
@@ -35,7 +50,7 @@ class Topic extends Component {
         const { posts, title } = this.state
         return (
             <div>
-                <TopicHeader text={title} />
+                <TopicHeader text={title} search={this.onSearch} select={this.onSelect} />
                 {posts && posts.length > 0
                     ? posts.map(post => <Postcard key={post.question.title} post={post} />)
                     : <div>No post</div>}
