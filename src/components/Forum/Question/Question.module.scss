@@ -1,0 +1,19 @@
+$theme_color: #3488bf;
+
+.mainContainer {
+  letter-spacing: normal;
+
+  .breadcrumbs {
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    > a {
+      color: #aaaaaa !important;
+    }
+
+    > span:last-child {
+      color: $theme_color;
+    }
+  }
+}

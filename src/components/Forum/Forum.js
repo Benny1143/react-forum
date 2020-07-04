@@ -7,6 +7,7 @@ import Post from './Post/Post'
 import AllTopics from './AllTopics/AllTopics';
 import Topic from './Topic/Topic';
 import RightSideBar from './RightSideBar/RightSideBar';
+import Question from './Question/Question';
 
 class Forum extends Component {
     render() {
@@ -21,6 +22,7 @@ class Forum extends Component {
                 <div className="col-lg-8">
                     <div className={styles.cardlist}>
                         <Switch>
+                            <Route path={`${baseURl}/questions/:id/:name`} component={Question} />
                             <Route path={`${baseURl}/all-topics`} component={AllTopics} />
                             <Route path={`${baseURl}/:topic`} component={Topic} />
                             <Route path={`${baseURl}`} component={Post} />
