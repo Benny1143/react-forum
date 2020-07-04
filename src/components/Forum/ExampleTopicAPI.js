@@ -1,6 +1,7 @@
 const posts = [{
     topic: "Secondary School",
     question: {
+        id: 1,
         title: "How do you do well for “N” Levels?",
         time: "10 days",
         name: "Shen Loke",
@@ -20,6 +21,7 @@ const posts = [{
 {
     topic: "Secondary School",
     question: {
+        id: 2,
         title: "What are the study habits a visual learner can pick up to score better and enjoy studying?",
         time: "10 days",
         name: "Shen Loke",
@@ -49,6 +51,7 @@ const posts = [{
 {
     topic: "Secondary School",
     question: {
+        id: 3,
         title: "Confused by Graphing Techniques",
         time: "10 mins",
         name: "Jane Low",
@@ -68,6 +71,7 @@ const posts = [{
 {
     topic: "Secondary School",
     question: {
+        id: 4,
         title: "What’s the trick to answering “Area Under Graph” questions?",
         time: "15 mins",
         name: "Ken Leow",
@@ -87,7 +91,8 @@ const posts = [{
 
 
 export const searchPost = (topic, search = null, select = null) => {
-    return posts.filter(post => post.topic === topic)
+    const a = posts.filter(post => post.topic === topic)
+    return search ? a.filter(({ question: { title } }) => title.toLowerCase().includes(search)) : a
 }
 
 export const homeFeed = _ => posts.filter(({ question: { subscribe } }) => subscribe)

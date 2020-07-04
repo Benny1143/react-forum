@@ -64,6 +64,7 @@ class Card extends Component {
     static propTypes = {
         question: PropTypes.bool.isRequired,
         details: PropTypes.shape({
+            id: PropTypes.number.isRequired,
             tags: PropTypes.arrayOf(PropTypes.string),
             time: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
@@ -79,14 +80,14 @@ class Card extends Component {
     readMore = _ => this.setState(({ displayMore }) => ({ displayMore: !displayMore }))
 
     render() {
-        const { details: { time, name, tags = [], subscribe, title, stats }, question } = this.props
+        const { details: { id, time, name, tags = [], subscribe, title, stats }, question } = this.props
         const { answer, more, displayMore } = this.state || {}
         return (
             <div className={styles.mainCard}>
                 <Stats stats={stats} question={question} />
                 <div className={styles.details}>
                     {question
-                        ? <div className={styles.title}><Link to="/forum/onboarding">{title}</Link></div>
+                        ? <div className={styles.title}><Link to={`/forum/questions/${id}/${title.split(" ").join("-")}`}>{title}</Link></div>
                         : <div className={cx(styles.answer, more && !displayMore && styles.more)}>
                             {(displayMore ? answer.concat(more) : answer).map((text, i) => <div key={i}>{text}</div>)}
                         </div>}
