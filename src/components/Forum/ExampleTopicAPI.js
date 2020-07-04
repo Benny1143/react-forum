@@ -97,3 +97,5 @@ export const searchPost = (topic, search = null, select = null) => {
 
 export const homeFeed = _ => posts.filter(({ question: { subscribe } }) => subscribe)
     .map(({ question, answers }) => answers ? { question, answer: answers[0] } : { question })
+
+export const getPost = id => posts.find(a =>  a.question.id === id)
