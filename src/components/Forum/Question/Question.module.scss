@@ -102,13 +102,45 @@ $theme_color: #3488bf;
     }
 
     .main {
-      margin-bottom: 65px;
+      margin-bottom: 52px;
 
       .text {
         font-size: 15px;
         line-height: 20px;
         color: black;
         white-space: pre-wrap;
+      }
+
+      .tags {
+        margin-top: 16px;
+        display: flex;
+        flex-wrap: wrap;
+
+        > div {
+          margin-top: 4px;
+          font-size: 10px;
+          height: 20px;
+          line-height: 20px;
+          color: white;
+          background-color: #636363;
+          padding-left: 5px;
+          padding-right: 5px;
+          margin-right: 5px;
+        }
+      }
+
+      .comments {
+        margin-top: 30px;
+
+        .add {
+          cursor: pointer;
+          font-size: 12px;
+          color: $theme_color;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
 
@@ -146,6 +178,41 @@ $theme_color: #3488bf;
         > span {
           font-size: 12px;
           color: $theme_color;
+        }
+      }
+    }
+  }
+
+  .mid {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    align-items: center;
+    color: #636363;
+
+    > span {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .buttons {
+      display: flex;
+
+      > div {
+        cursor: pointer;
+        font-size: 15px;
+        padding: 9px 14px;
+        background-color: rgba(0, 0, 0, 0);
+        border: 2px solid #636363;
+        border-right-width: 0px;
+
+        &:last-child {
+          border-right-width: 2px;
+        }
+
+        &.highlight {
+          background-color: #636363;
+          color: white;
         }
       }
     }

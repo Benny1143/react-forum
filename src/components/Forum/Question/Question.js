@@ -32,7 +32,7 @@ class Card extends Component {
 
     render() {
         const { votes, upvote, downvote } = this.state
-        const { text = "", time, name } = this.props.info
+        const { text = "", time, name, tags = [] } = this.props.info
         return (
             <div className={cx(card, styles.card)}>
                 <div className={styles.arrow}>
@@ -42,9 +42,9 @@ class Card extends Component {
                 </div>
                 <div className={styles.main}>
                     <div className={styles.text}>{text}</div>
-                    <div className={styles.tags}></div>
+                    {tags.length > 0 && <div className={styles.tags}>{tags.map((tag, i) => <div key={i}>{tag}</div>)}</div>}
                     <div className={styles.comments}>
-
+                        <span className={styles.add}>add a comment</span>
                     </div>
                 </div>
                 <FontAwesomeIcon icon="ellipsis-v" className={styles.menu} />
@@ -60,13 +60,18 @@ class Card extends Component {
 class Question extends Component {
     constructor(props) {
         super(props)
+        this.orders = ["Active", "Oldest", "Votes"]
         this.state = {
-            post: getPost(parseInt(props.match.params.id))
+            post: getPost(parseInt(props.match.params.id)),
+            orderBy: "Votes"
         }
+        this.orderBy = this.orderBy.bind(this)
     }
 
+    orderBy = ({ target }) => this.setState({ orderBy: target.innerHTML });
+
     render() {
-        const { post: { question: { title, time, stats: { views } }, topic, question } } = this.state
+        const { post: { question: { title, time, stats: { views } }, topic, question, answers = [] }, orderBy } = this.state
         const active = "today"
         return (
             <div className={styles.mainContainer}>
@@ -80,6 +85,12 @@ class Question extends Component {
                     <div>viewed <span>{views} times</span></div>
                 </div>
                 <Card info={question} />
+                <div className={styles.mid}>
+                    <span>{answers.length} Answers</span>
+                    <div className={styles.buttons}>
+                        {this.orders.map(order => <div onClick={this.orderBy} key={order} className={cx(orderBy === order && styles.highlight)}>{order}</div>)}
+                    </div>
+                </div>
             </div>
         )
     }
