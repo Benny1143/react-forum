@@ -168,6 +168,7 @@ $theme_color: #3488bf;
       }
 
       .username {
+        cursor: pointer;
         display: flex;
         justify-content: center;
 
@@ -178,6 +179,10 @@ $theme_color: #3488bf;
         > span {
           font-size: 12px;
           color: $theme_color;
+        }
+
+        &:hover {
+          text-decoration: underline;
         }
       }
     }
