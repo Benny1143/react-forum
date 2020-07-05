@@ -3,6 +3,10 @@ const posts = [{
     question: {
         id: 1,
         title: "How do you do well for “N” Levels?",
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue lacus. Quam nulla porttitor massa id neque aliquam. Ultrices mi tempus imperdiet nulla malesuada. Eros in cursus turpis massa tincidunt dui ut ornare lectus. Egestas sed sed risus pretium. Lorem dolor sed viverra ipsum. 
+
+Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt tortor. Sed blandit libero volutpat sed cras ornare. Et netus et malesuada fames ac. Ultrices eros in cursus turpis massa tincidunt dui ut ornare. Lacus sed viverra tellus in. Sollicitudin ac orci phasellus egestas. Purus in mollis nunc sed. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Interdum consectetur libero id faucibus nisl tincidunt eget        
+`,
         time: "10 days",
         name: "Shen Loke",
         tags: [
@@ -98,4 +102,4 @@ export const searchPost = (topic, search = null, select = null) => {
 export const homeFeed = _ => posts.filter(({ question: { subscribe } }) => subscribe)
     .map(({ question, answers }) => answers ? { question, answer: answers[0] } : { question })
 
-export const getPost = id => posts.find(a =>  a.question.id === id)
+export const getPost = id => posts.find(a => a.question.id === id)
