@@ -14,8 +14,8 @@ class Card extends Component {
         super(props)
         this.state = {
             votes: props.votes,
-            upvote: false,
-            downvote: false
+            upvote: props.vote === 'up',
+            downvote: props.vote === 'down'
         }
         this.upvote = this.upvote.bind(this)
         this.downvote = this.downvote.bind(this)
@@ -28,16 +28,28 @@ class Card extends Component {
         avatar: PropTypes.string,
         tags: PropTypes.arrayOf(PropTypes.string),
         votes: PropTypes.number,
+        vote: PropTypes.string,
         isQuestion: PropTypes.bool,
-        acceptedAnswer: PropTypes.bool
+        acceptedAnswer: PropTypes.bool,
+        hasAcceptedAnswer: PropTypes.bool,
+        comments: PropTypes.arrayOf(
+            PropTypes.shape({
+                comment: PropTypes.string.isRequired,
+                votes: PropTypes.number.isRequired,
+                vote: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired
+            })
+        )
     }
 
     static defaultProps = {
         avatar: "",
         tags: [],
         votes: 0,
+        vote: null,
         isQuestion: false,
-        acceptedAnswer: false
+        acceptedAnswer: false,
+        hasAcceptedAnswer: false
     }
 
     componentDidUpdate({ votes }) {

@@ -19,7 +19,8 @@ Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt torto
             votes: 30,
             answers: 20,
             views: 400
-        }
+        },
+        vote: "up"
     },
     answers: [{
         answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue lacus. Quam nulla porttitor massa id neque aliquam. Ultrices mi tempus imperdiet nulla malesuada. Eros in cursus turpis massa tincidunt dui ut ornare lectus. Egestas sed sed risus pretium. Lorem dolor sed viverra ipsum. 
@@ -30,7 +31,18 @@ Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt torto
         stats: {
             votes: 1,
             views: 10
-        }
+        },
+        comments: [{
+            comment: "but what if xyz happens?",
+            votes: 9,
+            vote: true,
+            name: "Jann Liew"
+        }, {
+            comment: "then perhaps you can do Y",
+            votes: 0,
+            vote: false,
+            name: "Jenny Lin"
+        }]
     }]
 },
 {
@@ -134,7 +146,8 @@ export const getPost = id => {
             text: answer.answer,
             time: answer.time,
             name: answer.name,
-            votes: answer.stats.votes
+            votes: answer.stats.votes,
+            comments: answer.comments
         }))
     }
     return a
