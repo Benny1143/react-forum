@@ -26,11 +26,12 @@ Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt torto
         answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue lacus. Quam nulla porttitor massa id neque aliquam. Ultrices mi tempus imperdiet nulla malesuada. Eros in cursus turpis massa tincidunt dui ut ornare lectus. Egestas sed sed risus pretium. Lorem dolor sed viverra ipsum. 
 
 Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt tortor. Sed blandit libero volutpat sed cras ornare. Et netus et malesuada fames ac. Ultrices eros in cursus turpis massa tincidunt dui ut ornare. Lacus sed viverra tellus in. Sollicitudin ac orci phasellus egestas. Purus in mollis nunc sed. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Interdum consectetur libero id faucibus nisl tincidunt eget`,
-        time: "10 mins",
+        time: "10 days",
         name: "Jenny Lin",
         acceptedAnswer: true,
+        vote: 'up',
         stats: {
-            votes: 1,
+            votes: 10,
             views: 10
         },
         comments: [{
@@ -44,6 +45,16 @@ Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt torto
             vote: false,
             name: "Jenny Lin"
         }]
+    }, {
+        answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue lacus. Quam nulla porttitor massa id neque aliquam. Ultrices mi tempus imperdiet nulla malesuada. Eros in cursus turpis massa tincidunt dui ut ornare lectus. Egestas sed sed risus pretium. Lorem dolor sed viverra ipsum. 
+
+Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt tortor. Sed blandit libero volutpat sed cras ornare. Et netus et malesuada fames ac. Ultrices eros in cursus turpis massa tincidunt dui ut ornare. Lacus sed viverra tellus in. Sollicitudin ac orci phasellus egestas. Purus in mollis nunc sed. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Interdum consectetur libero id faucibus nisl tincidunt eget`,
+        time: "9 days",
+        name: "Win Leow",
+        stats: {
+            votes: -1,
+            views: 1
+        }
     }]
 },
 {
@@ -148,6 +159,7 @@ export const getPost = id => {
             time: answer.time,
             name: answer.name,
             votes: answer.stats.votes,
+            vote: answer.vote,
             acceptedAnswer: answer.acceptedAnswer,
             comments: answer.comments
         }))

@@ -240,5 +240,9 @@ $theme_color: #3488bf;
         }
       }
     }
+
+    ~ div {
+      margin-bottom: 20px;
+    }
   }
 }
