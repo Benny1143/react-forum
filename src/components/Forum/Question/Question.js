@@ -88,7 +88,7 @@ class Card extends Component {
         const { text, time, name, avatar, tags, isOwner, isQuestion } = this.props
         const CheckButton = ({ className }) => <FontAwesomeIcon icon="check" onClick={this.checkAnswer} className={cx(isOwner && styles.clickable, className)} />
         return (
-            <div className={cx(card, styles.card)}>
+            <div className={cx(card, styles.card, acceptedAnswer && styles.highlight)}>
                 <div className={styles.arrow}>
                     <div className={cx(styles.up, !upvote && styles.unvote)} onClick={this.upvote}></div>
                     <div className={styles.votes}>{votes}</div>

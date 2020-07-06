@@ -48,6 +48,10 @@ $theme_color: #3488bf;
     padding-right: 62px;
     min-height: 200px;
 
+    &.highlight {
+      border: 2px solid #21a915;
+    }
+
     .arrow {
       margin-top: 3px;
       margin-left: 20px;
@@ -167,6 +171,7 @@ $theme_color: #3488bf;
 
     .user {
       position: absolute;
+      z-index: -1;
       bottom: 0px;
       right: 0px;
       padding-top: 7px;
