@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// import useForm from 'react-hook-form';
 import { isEmpty } from 'lodash';
+// import * as yup from 'yup';
 import styles from './Question.module.scss';
 import { Link } from 'react-router-dom';
 import { path } from '../TopicList';
@@ -8,6 +10,7 @@ import { getPost } from '../ExampleTopicAPI';
 import cx from 'classnames';
 import { card } from '../Forum.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import FormRichTextEditor from '../../FormRichTextEditor/FormRichTextEditor';
 import UserImg from '../UserImg/UserImg';
 
 class Card extends Component {
@@ -115,6 +118,30 @@ class Card extends Component {
     }
 }
 
+// const Editor = () => {
+//     const {
+//         register,
+//         // handleSubmit,
+//         setValue,
+//         errors,
+//         // formState: { isSubmitting },
+//     } = useForm({
+//         mode: 'onBlur',
+//         validationSchema: yup.object().shape({ description: yup.string().required() }),
+//         defaultValues: { description: "" }
+//     });
+
+//     return (
+//         <FormRichTextEditor
+//             name="description"
+//             placeholder="Description *"
+//             setValue={setValue}
+//             errors={errors}
+//             register={register}
+//         />
+//     )
+// }
+
 class Question extends Component {
     constructor(props) {
         super(props)
@@ -145,7 +172,7 @@ class Question extends Component {
         const active = "today"
         const isOwner = true
         return (
-            <div className={styles.mainContainer}>
+            <div className={styles.mainContainer} >
                 <div className={styles.breadcrumbs}>
                     <Link to="/forum/all-topics">All Topics</Link> / <Link to={path(topic)}>{topic} Discussion</Link> / <span>{title}</span>
                 </div>
@@ -163,7 +190,12 @@ class Question extends Component {
                     </div>
                 </div>
                 {answers.map((answer, i) => <Card {...answer} key={i} hasAcceptedAnswer={hasAcceptedAnswer} isOwner={isOwner} onCheck={this.onCheck} />)}
-            </div>
+                <div className={cx(card, styles.inputCard)}>
+                    <div>Know someone who can answer? Share a link to this question via <span>WhatsApp</span>, <span>Twitter</span>, or <span>Facebook</span>.</div>
+                    <div>Your Answer</div>
+                    {/* <Editor /> */}
+                </div>
+            </div >
         )
     }
 }

@@ -189,6 +189,7 @@ $theme_color: #3488bf;
         cursor: pointer;
         display: flex;
         justify-content: center;
+        align-items: center;
 
         > div {
           margin-right: 8px;
@@ -209,7 +210,7 @@ $theme_color: #3488bf;
   .mid {
     display: flex;
     justify-content: space-between;
-    margin-top: 60px;
+    margin-top: 40px;
     margin-bottom: 20px;
     align-items: center;
     color: #636363;
@@ -243,6 +244,39 @@ $theme_color: #3488bf;
 
     ~ div {
       margin-bottom: 20px;
+    }
+  }
+
+  .inputCard {
+    padding: 20px;
+
+    > div {
+      &:first-child {
+        color: black;
+        font-size: 15px;
+        line-height: 20px;
+        padding: 0 5px;
+        margin-top: 5px;
+
+        span {
+          color: $theme_color;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        margin-top: 24px;
+        margin-bottom: 5px;
+        padding: 0 5px;
+        font-size: 20px;
+      }
+
+      &:nth-child(3) {
+        min-height: 250px;
+      }
     }
   }
 }
