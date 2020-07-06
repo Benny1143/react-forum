@@ -64,7 +64,7 @@ class Card extends Component {
     static propTypes = {
         question: PropTypes.bool.isRequired,
         details: PropTypes.shape({
-            id: PropTypes.number.isRequired,
+            id: PropTypes.number,
             tags: PropTypes.arrayOf(PropTypes.string),
             time: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,

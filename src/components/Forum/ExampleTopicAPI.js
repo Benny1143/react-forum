@@ -20,13 +20,28 @@ Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt torto
             answers: 20,
             views: 400
         }
-    }
+    },
+    answers: [{
+        answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue lacus. Quam nulla porttitor massa id neque aliquam. Ultrices mi tempus imperdiet nulla malesuada. Eros in cursus turpis massa tincidunt dui ut ornare lectus. Egestas sed sed risus pretium. Lorem dolor sed viverra ipsum. 
+
+Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt tortor. Sed blandit libero volutpat sed cras ornare. Et netus et malesuada fames ac. Ultrices eros in cursus turpis massa tincidunt dui ut ornare. Lacus sed viverra tellus in. Sollicitudin ac orci phasellus egestas. Purus in mollis nunc sed. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Interdum consectetur libero id faucibus nisl tincidunt eget`,
+        time: "10 mins",
+        name: "Jenny Lin",
+        stats: {
+            votes: 1,
+            views: 10
+        }
+    }]
 },
 {
     topic: "Secondary School",
     question: {
         id: 2,
         title: "What are the study habits a visual learner can pick up to score better and enjoy studying?",
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue lacus. Quam nulla porttitor massa id neque aliquam. Ultrices mi tempus imperdiet nulla malesuada. Eros in cursus turpis massa tincidunt dui ut ornare lectus. Egestas sed sed risus pretium. Lorem dolor sed viverra ipsum. 
+
+Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt tortor. Sed blandit libero volutpat sed cras ornare. Et netus et malesuada fames ac. Ultrices eros in cursus turpis massa tincidunt dui ut ornare. Lacus sed viverra tellus in. Sollicitudin ac orci phasellus egestas. Purus in mollis nunc sed. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Interdum consectetur libero id faucibus nisl tincidunt eget        
+`,
         time: "10 days",
         name: "Shen Loke",
         tags: [
@@ -57,6 +72,10 @@ Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt torto
     question: {
         id: 3,
         title: "Confused by Graphing Techniques",
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue lacus. Quam nulla porttitor massa id neque aliquam. Ultrices mi tempus imperdiet nulla malesuada. Eros in cursus turpis massa tincidunt dui ut ornare lectus. Egestas sed sed risus pretium. Lorem dolor sed viverra ipsum. 
+
+Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt tortor. Sed blandit libero volutpat sed cras ornare. Et netus et malesuada fames ac. Ultrices eros in cursus turpis massa tincidunt dui ut ornare. Lacus sed viverra tellus in. Sollicitudin ac orci phasellus egestas. Purus in mollis nunc sed. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Interdum consectetur libero id faucibus nisl tincidunt eget        
+`,
         time: "10 mins",
         name: "Jane Low",
         tags: [
@@ -77,6 +96,10 @@ Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt torto
     question: {
         id: 4,
         title: "What’s the trick to answering “Area Under Graph” questions?",
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc sed augue lacus. Quam nulla porttitor massa id neque aliquam. Ultrices mi tempus imperdiet nulla malesuada. Eros in cursus turpis massa tincidunt dui ut ornare lectus. Egestas sed sed risus pretium. Lorem dolor sed viverra ipsum. 
+
+Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt tortor. Sed blandit libero volutpat sed cras ornare. Et netus et malesuada fames ac. Ultrices eros in cursus turpis massa tincidunt dui ut ornare. Lacus sed viverra tellus in. Sollicitudin ac orci phasellus egestas. Purus in mollis nunc sed. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Interdum consectetur libero id faucibus nisl tincidunt eget        
+`,
         time: "15 mins",
         name: "Ken Leow",
         tags: [
@@ -102,4 +125,17 @@ export const searchPost = (topic, search = null, select = null) => {
 export const homeFeed = _ => posts.filter(({ question: { subscribe } }) => subscribe)
     .map(({ question, answers }) => answers ? { question, answer: answers[0] } : { question })
 
-export const getPost = id => posts.find(a => a.question.id === id)
+export const getPost = id => {
+    let a = { ...posts.find(a => a.question.id === id) }
+    a.question.views = a.question.stats.views
+    a.question.votes = a.question.stats.votes
+    if (a.answers) {
+        a.answers = a.answers.map(answer => ({
+            text: answer.answer,
+            time: answer.time,
+            name: answer.name,
+            votes: answer.stats.votes
+        }))
+    }
+    return a
+}

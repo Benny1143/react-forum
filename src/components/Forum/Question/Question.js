@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styles from './Question.module.scss';
 import { Link } from 'react-router-dom';
 import { path } from '../TopicList';
@@ -12,12 +13,37 @@ class Card extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            votes: props.info.stats.votes || 0,
+            votes: props.votes,
             upvote: false,
             downvote: false
         }
         this.upvote = this.upvote.bind(this)
         this.downvote = this.downvote.bind(this)
+    }
+
+    static propTypes = {
+        text: PropTypes.string.isRequired,
+        time: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        avatar: PropTypes.string,
+        tags: PropTypes.arrayOf(PropTypes.string),
+        votes: PropTypes.number,
+        isQuestion: PropTypes.bool,
+        acceptedAnswer: PropTypes.bool
+    }
+
+    static defaultProps = {
+        avatar: "",
+        tags: [],
+        votes: 0,
+        isQuestion: false,
+        acceptedAnswer: false
+    }
+
+    componentDidUpdate({ votes }) {
+        if (votes !== this.props.votes) {
+            this.setState({ votes: this.props.votes })
+        }
     }
 
     upvote = _ => {
@@ -32,7 +58,7 @@ class Card extends Component {
 
     render() {
         const { votes, upvote, downvote } = this.state
-        const { text = "", time, name, tags = [] } = this.props.info
+        const { text, time, name, avatar, tags } = this.props
         return (
             <div className={cx(card, styles.card)}>
                 <div className={styles.arrow}>
@@ -50,7 +76,7 @@ class Card extends Component {
                 <FontAwesomeIcon icon="ellipsis-v" className={styles.menu} />
                 <div className={styles.user}>
                     <div className={styles.time}>asked {time} ago</div>
-                    <div className={styles.username}><UserImg width={24} /><span>{name}</span></div>
+                    <div className={styles.username}><UserImg width={24} alt={{ name, avatar }} /><span>{name}</span></div>
                 </div>
             </div>
         )
@@ -62,7 +88,7 @@ class Question extends Component {
         super(props)
         this.orders = ["Active", "Oldest", "Votes"]
         this.state = {
-            post: getPost(parseInt(props.match.params.id)),
+            post: {},
             orderBy: "Votes"
         }
         this.orderBy = this.orderBy.bind(this)
@@ -70,8 +96,14 @@ class Question extends Component {
 
     orderBy = ({ target }) => this.setState({ orderBy: target.innerHTML });
 
+    fetchPost = _ => this.setState({ post: getPost(parseInt(this.props.match.params.id)) })
+
+    componentDidMount() {
+        this.fetchPost()
+    }
+
     render() {
-        const { post: { question: { title, time, stats: { views } }, topic, question, answers = [] }, orderBy } = this.state
+        const { post: { question: { title, time, views } = {}, topic = "", question, answers = [] }, orderBy } = this.state
         const active = "today"
         return (
             <div className={styles.mainContainer}>
@@ -84,13 +116,14 @@ class Question extends Component {
                     <div>last <span>active {active}</span></div>
                     <div>viewed <span>{views} times</span></div>
                 </div>
-                <Card info={question} />
+                {question && <Card {...question} isQuestion={true} />}
                 <div className={styles.mid}>
                     <span>{answers.length} Answers</span>
                     <div className={styles.buttons}>
                         {this.orders.map(order => <div onClick={this.orderBy} key={order} className={cx(orderBy === order && styles.highlight)}>{order}</div>)}
                     </div>
                 </div>
+                {answers.map((answer, i) => <Card {...answer} key={i} />)}
             </div>
         )
     }
