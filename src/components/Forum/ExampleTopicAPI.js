@@ -28,6 +28,7 @@ Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt torto
 Gravida rutrum quisque non tellus. Rutrum tellus pellentesque eu tincidunt tortor. Sed blandit libero volutpat sed cras ornare. Et netus et malesuada fames ac. Ultrices eros in cursus turpis massa tincidunt dui ut ornare. Lacus sed viverra tellus in. Sollicitudin ac orci phasellus egestas. Purus in mollis nunc sed. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Interdum consectetur libero id faucibus nisl tincidunt eget`,
         time: "10 mins",
         name: "Jenny Lin",
+        acceptedAnswer: true,
         stats: {
             votes: 1,
             views: 10
@@ -147,8 +148,10 @@ export const getPost = id => {
             time: answer.time,
             name: answer.name,
             votes: answer.stats.votes,
+            acceptedAnswer: answer.acceptedAnswer,
             comments: answer.comments
         }))
+        a.hasAcceptedAnswer = !!a.answers.find(({ acceptedAnswer }) => acceptedAnswer)
     }
     return a
 }

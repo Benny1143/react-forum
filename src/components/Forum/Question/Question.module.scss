@@ -53,6 +53,7 @@ $theme_color: #3488bf;
       margin-left: 20px;
       margin-right: 18px;
       width: 24px;
+      text-align: center;
 
       %arrow {
         cursor: pointer;
@@ -91,13 +92,26 @@ $theme_color: #3488bf;
 
       .votes {
         margin: 5px 0;
-        text-align: center;
         color: #636363;
         font-size: 20px;
       }
 
       .down {
         @extend %arrow;
+      }
+
+      svg {
+        font-size: 23px;
+        margin-top: 16px;
+        color: #aaaaaa;
+
+        &.highlight {
+          color: #21a915;
+        }
+
+        &.clickable {
+          cursor: pointer;
+        }
       }
     }
 

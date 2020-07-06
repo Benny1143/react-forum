@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { isEmpty } from 'lodash';
 import styles from './Question.module.scss';
 import { Link } from 'react-router-dom';
 import { path } from '../TopicList';
@@ -15,10 +16,13 @@ class Card extends Component {
         this.state = {
             votes: props.votes,
             upvote: props.vote === 'up',
-            downvote: props.vote === 'down'
+            downvote: props.vote === 'down',
+            acceptedAnswer: props.acceptedAnswer,
+            hasAcceptedAnswer: props.hasAcceptedAnswer
         }
         this.upvote = this.upvote.bind(this)
         this.downvote = this.downvote.bind(this)
+        this.checkAnswer = this.checkAnswer.bind(this)
     }
 
     static propTypes = {
@@ -29,6 +33,7 @@ class Card extends Component {
         tags: PropTypes.arrayOf(PropTypes.string),
         votes: PropTypes.number,
         vote: PropTypes.string,
+        isOwner: PropTypes.bool,
         isQuestion: PropTypes.bool,
         acceptedAnswer: PropTypes.bool,
         hasAcceptedAnswer: PropTypes.bool,
@@ -39,7 +44,8 @@ class Card extends Component {
                 vote: PropTypes.bool.isRequired,
                 name: PropTypes.string.isRequired
             })
-        )
+        ),
+        onCheck: PropTypes.func
     }
 
     static defaultProps = {
@@ -47,15 +53,15 @@ class Card extends Component {
         tags: [],
         votes: 0,
         vote: null,
+        isOwner: false,
         isQuestion: false,
         acceptedAnswer: false,
         hasAcceptedAnswer: false
     }
 
-    componentDidUpdate({ votes }) {
-        if (votes !== this.props.votes) {
-            this.setState({ votes: this.props.votes })
-        }
+    componentDidUpdate({ votes, hasAcceptedAnswer }) {
+        if (votes !== this.props.votes) this.setState({ votes: this.props.votes })
+        else if (hasAcceptedAnswer !== this.props.hasAcceptedAnswer) this.setState({ hasAcceptedAnswer: this.props.hasAcceptedAnswer })
     }
 
     upvote = _ => {
@@ -68,15 +74,29 @@ class Card extends Component {
         else this.setState(({ votes, upvote }) => ({ votes: votes - (upvote ? 2 : 1), downvote: true, upvote: false }))
     }
 
+    checkAnswer = _ => {
+        const { acceptedAnswer, hasAcceptedAnswer } = this.state
+        if (this.props.isOwner) {
+            if (acceptedAnswer && hasAcceptedAnswer) this.setState({ acceptedAnswer: false, hasAcceptedAnswer: false })
+            else if (!acceptedAnswer && !hasAcceptedAnswer) this.setState({ acceptedAnswer: true, hasAcceptedAnswer: true })
+            this.props.onCheck()
+        }
+    }
+
     render() {
-        const { votes, upvote, downvote } = this.state
-        const { text, time, name, avatar, tags } = this.props
+        const { votes, upvote, downvote, acceptedAnswer, hasAcceptedAnswer } = this.state
+        const { text, time, name, avatar, tags, isOwner, isQuestion } = this.props
+        const CheckButton = ({ className }) => <FontAwesomeIcon icon="check" onClick={this.checkAnswer} className={cx(isOwner && styles.clickable, className)} />
         return (
             <div className={cx(card, styles.card)}>
                 <div className={styles.arrow}>
                     <div className={cx(styles.up, !upvote && styles.unvote)} onClick={this.upvote}></div>
                     <div className={styles.votes}>{votes}</div>
                     <div className={cx(styles.down, !downvote && styles.unvote)} onClick={this.downvote}></div>
+                    {!isQuestion && acceptedAnswer
+                        ? <CheckButton className={acceptedAnswer && styles.highlight} />
+                        : isOwner && !hasAcceptedAnswer && <CheckButton />
+                    }
                 </div>
                 <div className={styles.main}>
                     <div className={styles.text}>{text}</div>
@@ -100,23 +120,30 @@ class Question extends Component {
         super(props)
         this.orders = ["Active", "Oldest", "Votes"]
         this.state = {
-            post: {},
+            topic: "",
+            question: {},
+            answers: [],
+            hasAcceptedAnswer: false,
             orderBy: "Votes"
         }
         this.orderBy = this.orderBy.bind(this)
+        this.onCheck = this.onCheck.bind(this)
     }
 
     orderBy = ({ target }) => this.setState({ orderBy: target.innerHTML });
 
-    fetchPost = _ => this.setState({ post: getPost(parseInt(this.props.match.params.id)) })
+    fetchPost = _ => this.setState({ ...getPost(parseInt(this.props.match.params.id)) })
+
+    onCheck = _ => this.setState(({ hasAcceptedAnswer }) => ({ hasAcceptedAnswer: !hasAcceptedAnswer }))
 
     componentDidMount() {
         this.fetchPost()
     }
 
     render() {
-        const { post: { question: { title, time, views } = {}, topic = "", question, answers = [] }, orderBy } = this.state
+        const { question: { title, time, views }, topic, question, answers, hasAcceptedAnswer, orderBy } = this.state
         const active = "today"
+        const isOwner = true
         return (
             <div className={styles.mainContainer}>
                 <div className={styles.breadcrumbs}>
@@ -128,14 +155,14 @@ class Question extends Component {
                     <div>last <span>active {active}</span></div>
                     <div>viewed <span>{views} times</span></div>
                 </div>
-                {question && <Card {...question} isQuestion={true} />}
+                {!isEmpty(question) && <Card {...question} isQuestion={true} />}
                 <div className={styles.mid}>
                     <span>{answers.length} Answers</span>
                     <div className={styles.buttons}>
                         {this.orders.map(order => <div onClick={this.orderBy} key={order} className={cx(orderBy === order && styles.highlight)}>{order}</div>)}
                     </div>
                 </div>
-                {answers.map((answer, i) => <Card {...answer} key={i} />)}
+                {answers.map((answer, i) => <Card {...answer} key={i} hasAcceptedAnswer={hasAcceptedAnswer} isOwner={isOwner} onCheck={this.onCheck} />)}
             </div>
         )
     }
