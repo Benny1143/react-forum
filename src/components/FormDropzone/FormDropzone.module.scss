@@ -1,0 +1,56 @@
+@import '../../theme/variables.scss';
+
+.dropzone {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px;
+  width: 100%;
+  border: 2px dashed $table-border-color;
+  cursor: pointer;
+
+  .dropzoneNotes {
+    height: 100px;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      position: relative;
+      display: inline-block;
+      list-style: none;
+      margin: 0;
+      padding: 5px;
+
+      img {
+        margin: 0;
+        padding: 0;
+        height: 100px;
+      }
+
+      a {
+        position: absolute;
+        display: none;
+        top: -12px;
+        right: 0;
+      }
+
+      &:hover {
+        img {
+          opacity: 0.75;
+        }
+
+        a {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.dropzoneActive {
+  border: 2px solid $table-border-color;
+}

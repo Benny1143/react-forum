@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "smartguppy-test",
+    "production": "smartguppy-8f83a"
+  }
+}

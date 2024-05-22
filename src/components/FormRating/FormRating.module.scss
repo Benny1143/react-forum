@@ -1,0 +1,19 @@
+.formRating {
+  :global(.react-rater) {
+    display: inline-block;
+    font-size: 16px;
+    letter-spacing: 3px;
+
+    & > div {
+      display: inline-block;
+    }
+
+    & > :global(.will-be-active) {
+      color: #ffdd99;
+    }
+
+    & > :global(.is-active) {
+      color: #f8ab47;
+    }
+  }
+}

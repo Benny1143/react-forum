@@ -1,0 +1,9 @@
+.pagination {
+  .active a {
+    color: #fff !important;
+  }
+
+  :global(li > span) {
+    color: #ccc !important;
+  }
+}

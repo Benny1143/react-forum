@@ -1,0 +1,6 @@
+.richEditorText {
+  & > p,
+  & > ol > li {
+    letter-spacing: 0;
+  }
+}

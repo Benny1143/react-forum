@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
+div.bor {
+  width: 850px;
+  border-style: solid;
+  border-width: 4px;
+  border-color: #c16622;
+}
+
+div.contributeButton {
+  margin-bottom: 50px;
+  background-color: #c16622;
+  text-align: center;
+  margin: auto;
+  width: 400px;
+
+  a {
+    display: block;
+    padding-bottom: 20px;
+    color: #fff !important;
+    text-decoration: none;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    margin-top: 20px;
+  }
+}
+
+div.bor:before,
+div.bor:after {
+  position: relative;
+  color: #207dba;
+  font-size: 24rem;
+  font-weight: 700;
+  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+  background-color: #fff;
+}
+
+div.bor:before {
+  content: '“';
+  left: -35rem;
+  top: 3rem;
+}
+
+div.bor:after {
+  /* content: '”'; */
+  letter-spacing: -0.05em;
+  content: ',,';
+  right: -350px;
+  bottom: -1rem;
+}
+
+.pcenter {
+  text-align: center;
+}
+
+.box {
+  width: 650px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  font-size: large;
+  border-color: #207dba;
+  border-width: 4px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: auto;
+}
+
+@media only screen and (max-width: 992px) {
+  div.bor {
+    width: 100%;
+  }
+
+  div.bor:before {
+    content: '“';
+    left: -35rem;
+    top: 2rem;
+  }
+
+  div.bor:after {
+    letter-spacing: -0.1em;
+    content: ',,';
+    right: -35rem;
+    bottom: -0.3rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  div.bor {
+    border-width: 2px;
+  }
+  div.bor:before,
+  div.bor:after {
+    position: relative;
+    color: #207dba;
+    font-size: 18rem;
+    font-weight: 500;
+    font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+    background-color: transparent;
+  }
+
+  div.bor:before {
+    content: '“';
+    left: -10rem;
+    top: 2rem;
+  }
+
+  div.bor:after {
+    letter-spacing: -0.1em;
+    content: ',,';
+    right: -100px;
+    bottom: -0.3rem;
+  }
+
+  div.contributeButton {
+    width: 100%;
+  }
+
+  .box {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 568px) and (min-width: 480px) {
+  div.bor:before,
+  div.bor:after {
+    position: relative;
+    color: #207dba;
+    font-size: 18rem;
+    font-weight: 500;
+    font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+    background-color: transparent;
+  }
+
+  div.bor:before {
+    content: '“';
+    left: -18rem;
+    top: 2rem;
+  }
+
+  div.bor:after {
+    letter-spacing: -0.1em;
+    content: ',,';
+    right: -18rem;
+    bottom: -0.3rem;
+  }
+
+  .para {
+    width: 100%;
+  }
+
+  .box {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 900px) and (min-width: 750px) {
+  div.bor:before,
+  div.bor:after {
+    position: relative;
+    color: #207dba;
+    font-size: 20rem;
+    font-weight: 600;
+    font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+    background-color: transparent;
+  }
+
+  div.bor {
+    width: 100%;
+  }
+
+  div.bor:before {
+    content: '“';
+    left: -30rem;
+    top: 2rem;
+  }
+
+  div.bor:after {
+    letter-spacing: -0.1em;
+    content: ',,';
+    right: -30rem;
+    bottom: -0.3rem;
+  }
+}
+
+@media only screen and (max-width: 750px) and (min-width: 600px) {
+  div.bor:before,
+  div.bor:after {
+    position: relative;
+    color: #207dba;
+    font-size: 20rem;
+    font-weight: 600;
+    font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+    background-color: transparent;
+  }
+
+  div.bor {
+    width: 100%;
+  }
+
+  div.bor:before {
+    content: '“';
+    left: -25rem;
+    top: 2rem;
+  }
+
+  div.bor:after {
+    letter-spacing: -0.1em;
+    content: ',,';
+    right: -25rem;
+    bottom: -0.3rem;
+  }
+}

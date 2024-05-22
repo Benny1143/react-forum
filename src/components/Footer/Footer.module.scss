@@ -1,0 +1,19 @@
+.title {
+  font-weight: bold;
+}
+
+:global(footer#footer .cs-footer-nav .footer-nav) {
+  .col4 {
+    column-count: 4;
+
+    :global(ul li) {
+      border: none;
+      min-width: 100%;
+      
+      :global(a) {
+        line-height: normal;
+      }
+    }
+    
+  }
+}

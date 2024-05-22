@@ -1,0 +1,57 @@
+.formDatePicker {
+  .container {
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    border-collapse: separate;
+    display: inline-table;
+    height: 2.429em;
+    width: 100%;
+    margin: 0;
+
+    .select {
+      box-sizing: border-box;
+      position: relative;
+      outline: none;
+      width: 100%;
+      height: 100%;
+      display: table-cell;
+      cursor: pointer;
+      border: none;
+      border-left: 1px solid #ccc;
+      width: 1%;
+      white-space: nowrap;
+
+      .selectButton {
+        box-sizing: border-box;
+        width: 1.9em;
+        height: 100%;
+        position: relative;
+        color: #333;
+        display: inline-block;
+        text-align: center;
+        vertical-align: bottom;
+        border: none;
+        cursor: pointer;
+        outline: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 500px) and (min-height: 500px) {
+  :global {
+    .react-datepicker__portal {
+      .react-datepicker__day-name,
+      .react-datepicker__day,
+      .react-datepicker__time-name {
+        width: 5rem;
+        line-height: 5rem;
+      }
+
+      .react-datepicker {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

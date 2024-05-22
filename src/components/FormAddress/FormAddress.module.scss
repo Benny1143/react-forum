@@ -1,0 +1,19 @@
+.formAddress {
+  .autocompleteContainer {
+    border-bottom: honeydew;
+    border-left: honeydew;
+    border-right: honeydew;
+    border-top: 1px solid #e6e6e6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 2px 2px;
+  }
+
+  .suggestionItem {
+    padding: 4px;
+    text-align: left;
+  }
+
+  .suggestionIcon {
+    margin-right: 8px;
+  }
+}

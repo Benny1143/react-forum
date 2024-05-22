@@ -1,0 +1,76 @@
+.img {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  grid-area: img;
+}
+
+.eventText {
+  font-size: 12px;
+  grid-area: event-text;
+}
+
+.programmeSection {
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: 10% 30% 50%;
+  grid-template-rows: 0.4fr 12fr;
+  grid-template-areas: '. img event-title .' '. img event-text .';
+}
+
+.descriptionTitle {
+  margin: 0;
+  width: 75%;
+}
+
+.eventTitle {
+  font-size: 20px;
+  color: #707062;
+  margin-left: 19px;
+  grid-area: event-title;
+}
+
+.button {
+  display: inline-flex;
+  height: 80px;
+  border: 3px solid #3488bf;
+  width: 250px;
+  margin: 20px;
+  color: #555555;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  background: linear-gradient(to right, #3488bf 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
+}
+
+.button:hover {
+  background-position: left bottom;
+  text-decoration: none;
+  color: rgb(248, 242, 242);
+}
+
+@media only screen and (max-width: 768px) {
+  .eventTitle {
+    order: 1;
+  }
+
+  .img {
+    order: 2;
+  }
+
+  .programmeSection {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .eventText {
+    order: 3;
+    margin: 0;
+  }
+}

@@ -1,0 +1,23 @@
+:global(.top-bar .cs-user ul li:first-child) {
+  border-left: none;
+}
+
+:global(.cs-user-login) {
+  margin-right: 10px;
+}
+
+.mobileMenu {
+  :global(.menu-item) {
+    margin-bottom: 10px;
+
+    img {
+      height: 36px;
+      width: 36px;
+      margin-right: 5px;
+    }
+  }
+}
+
+a.activeLink {
+  color: #555555;
+}

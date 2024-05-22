@@ -1,0 +1,80 @@
+.formMultiselect {
+  :global(.rw-multiselect) {
+    border: none;
+
+    :global(.rw-widget-container) {
+      min-height: 43px;
+      width: 100%;
+      background-color: #fcfcfc;
+      border: 1px solid #f6f6f6;
+      color: #666;
+      font-size: 13px;
+      line-height: 16px;
+      border-radius: 2px;
+      box-shadow: none;
+
+      :global(.rw-input-reset) {
+        border: none;
+        background: transparent;
+
+        &:focus {
+          border: none !important;
+        }
+      }
+    }
+
+    :global(.rw-list) {
+      list-style: none;
+
+      :global(.rw-list-option) {
+        list-style: none;
+      }
+
+      :global(.rw-list-empty) {
+        list-style: none;
+      }
+    }
+  }
+}
+
+.inputGroup {
+  position: relative;
+}
+
+.flags {
+  position: absolute;
+  right: 20px;
+  top: 7px;
+  & > * {
+    margin: 0 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    color: white;
+    float: right;
+    text-align: center;
+  }
+  .active {
+    background: linear-gradient(#cc0, #aa0);
+    color: black;
+  }
+  .dirty {
+    background: linear-gradient(#090, #060);
+  }
+  .visited {
+    background: linear-gradient(#009, #006);
+  }
+  .touched {
+    background: linear-gradient(#099, #066);
+  }
+}
+
+.radioLabel {
+  margin: 0 25px 0 5px;
+}
+.cog {
+  position: absolute;
+  left: 0;
+  top: 10px;
+}

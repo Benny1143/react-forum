@@ -1,0 +1,47 @@
+.partners {
+  padding: 5px 0;
+
+  h6.header {
+    font-size: 14px !important;
+    color: #999 !important;
+    text-transform: uppercase !important;
+  }
+
+  .partnersList {
+    text-align: center;
+
+    @media (max-width: 681px) {
+      padding: 0 20px;
+    }
+
+    :global .slick-slider {
+      margin-bottom: 0;
+
+      & :global .slick-prev {
+        left: -20px;
+      }
+
+      & :global .slick-next {
+        right: -20px;
+      }
+
+      & :global .slick-prev::before,
+      & :global .slick-next::before {
+        color: #c3c3c3;
+
+        @media (min-width: 681px) {
+          display: none;
+        }
+      }
+    }
+
+    .partnersLogo {
+      display: inline-block;
+
+      img {
+        margin: auto;
+        height: 50px;
+      }
+    }
+  }
+}
